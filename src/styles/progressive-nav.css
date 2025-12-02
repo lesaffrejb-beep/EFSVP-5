@@ -403,7 +403,7 @@
     width: 0;
     height: 2px;
     border-radius: 999px;
-    background: linear-gradient(90deg, #f97316, #fbbf24);
+    background: linear-gradient(90deg, #CC4B24, #F1BE49); /* Dark Pastel Red → Maximum Yellow */
     transition: width 220ms cubic-bezier(0.33, 1, 0.68, 1);
   }
 
@@ -417,12 +417,12 @@
 
   .nav__links--mobile .nav__link:focus-visible,
   .nav__menu-close:focus-visible {
-    outline: 2px solid #f97316;
+    outline: 2px solid #CC4B24; /* Dark Pastel Red */
     outline-offset: 3px;
   }
 
   .nav__link--active {
-    color: #f97316;
+    color: #CC4B24; /* Dark Pastel Red */
   }
 
   .nav__link--active::after {

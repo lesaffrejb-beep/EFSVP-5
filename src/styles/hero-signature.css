@@ -13,23 +13,17 @@
    ======================================== */
 
 :root {
-  /* Palette neutre sophisticated */
-  --color-hero-bg: #F5F3F0;           /* Beige clair */
-  --color-text-primary: #1A1A1A;      /* Presque noir */
-  --color-text-secondary: #6B6B6B;    /* Gris moyen */
-  --color-text-tertiary: #9A9A9A;     /* Gris clair */
+  /* Palette cohérente avec main.css - NE PAS REDÉFINIR */
+  /* Toutes les couleurs sont définies dans main.css :
+     - Primary: #317039 (Emerald Green)
+     - Accent/CTA: #CC4B24 (Dark Pastel Red)
+     - Backgrounds: #FBEDD9, #FFF1D4, #FFFBEB
+     - Text: #1A1A1A
+  */
 
-  /* Ombres dédiées au CTA hero (full orange, sans noir) */
-  --shadow-hero-cta: 0 16px 32px rgba(224, 120, 85, 0.28);
-  --shadow-hero-cta-strong: 0 24px 48px rgba(224, 120, 85, 0.42);
-
-  /* Couleur accent (orange) */
-  --color-primary: #E07855;           /* Orange accent */
-  --color-primary-hover: #D06744;     /* Orange plus foncé */
-  --color-primary-rgb: 224, 120, 85;
-
-  /* Navbar existante (référence) */
-  --color-bg-dark: #2B3945;           /* Navbar background */
+  /* Ombres dédiées au CTA hero (Dark Pastel Red) */
+  --shadow-hero-cta: 0 16px 32px rgba(204, 75, 36, 0.28);
+  --shadow-hero-cta-strong: 0 24px 48px rgba(204, 75, 36, 0.42);
 }
 
 /* ========================================
