@@ -2,7 +2,7 @@
  * ============================================
  * EFSVP - DESIGN SYSTEM MASTER
  * Version unifiée - Dribbble-worthy
- * Palette: Terracotta #B95A40 + Encre Nuit #1A2332
+ * Palette: Emerald Green #317039 + Dark Pastel Red #CC4B24
  * --------------------------------------------
  * Plan (avril 2025)
  * - Introduire des tokens boutons cohérents + micro-interactions premium
@@ -17,126 +17,124 @@
 
 :root {
   /* ============================================
-     COLORS SYSTEM - Sophistication & Warmth
+     COLORS SYSTEM - Fresh & Natural
      ============================================ */
 
-  /* Primary: Terre Cuite (Warm, Artisanal, Human) */
-  --color-primary-50: #fef5f3;
-  --color-primary-100: #fde8e3;
-  --color-primary-200: #fbd4ca;
-  --color-primary-300: #f7b5a3;
-  --color-primary-400: #f08c6e;
-  --color-primary-500: #b95a40; /* Base */
-  --color-primary-600: #a04e37;
-  --color-primary-700: #86402d;
-  --color-primary-800: #6d3526;
-  --color-primary-900: #5a2d21;
+  /* Primary: Emerald Green (Natural, Fresh, Trust) */
+  --color-primary-50: #f0f7f1;
+  --color-primary-100: #d9eedc;
+  --color-primary-200: #b3ddb9;
+  --color-primary-300: #8dcc96;
+  --color-primary-400: #4f9a5a;
+  --color-primary-500: #317039; /* Base - Emerald Green */
+  --color-primary-600: #2a6031;
+  --color-primary-700: #235029;
+  --color-primary-800: #1c4021;
+  --color-primary-900: #153019;
 
-  /* Neutral: Encre Nuit (Depth, Elegance, Readability) */
-  --color-neutral-50: #f8f9fa;
-  --color-neutral-100: #e9ecef;
-  --color-neutral-200: #d3d7dd;
-  --color-neutral-300: #adb5bd;
-  --color-neutral-400: #6c757d;
-  --color-neutral-500: #495057;
-  --color-neutral-600: #343a40;
-  --color-neutral-700: #28303a;
-  --color-neutral-800: #1a2332; /* Base */
-  --color-neutral-900: #0d1117;
+  /* Neutral: Soft Black (Depth, Elegance, Readability) */
+  --color-neutral-50: #FFFBEB;   /* Cosmic Latte */
+  --color-neutral-100: #FFF1D4;  /* Papaya Whip */
+  --color-neutral-200: #FBEDD9;  /* Antique White */
+  --color-neutral-300: #e8dcc8;
+  --color-neutral-400: #8a8a8a;
+  --color-neutral-500: #5A5A5A;  /* Texte secondaire */
+  --color-neutral-600: #3a3a3a;
+  --color-neutral-700: #2a2a2a;
+  --color-neutral-800: #1A1A1A;  /* Texte principal */
+  --color-neutral-900: #0d0d0d;
 
-  /* Ink Blues - contrast & navigation surfaces */
-  --ink-50: #f1f5ff;
-  --ink-100: #e3edff;
-  --ink-200: #c6dcff;
-  --ink-300: #9abff5;
-  --ink-400: #6d9fe5;
-  --ink-500: #3d7ed0;
-  --ink-600: #2f64ad;
-  --ink-700: #244c85;
-  --ink-800: #193861;
-  --ink-900: #0f253f;
-  --ink-deep: #0c1b2e;
-  --ink-on-paper: #0b1530;
+  /* Accent scale - Dark Pastel Red for CTAs */
+  --ink-50: #fef5f2;
+  --ink-100: #fde8e3;
+  --ink-200: #fbd0c6;
+  --ink-300: #f7aa99;
+  --ink-400: #e67a5f;
+  --ink-500: #CC4B24; /* Base - Dark Pastel Red */
+  --ink-600: #b3421f;
+  --ink-700: #99381a;
+  --ink-800: #802e16;
+  --ink-900: #662511;
+  --ink-deep: #4d1c0d;
+  --ink-on-paper: #1A1A1A;
   --ink-surface: var(--color-hero-bg);
   --ink-surface-strong: color-mix(in srgb, var(--color-hero-bg) 88%, var(--bg-primary) 12%);
   --ink-border: color-mix(in srgb, var(--color-neutral-700) 12%, transparent);
 
   /* Semantic Colors */
-  --color-success: #2d6e4f;
-  --color-success-light: #d4edda;
-  --color-warning: #f6aa1c;
-  --color-warning-light: #fff3cd;
-  --color-error: #c92a2a;
-  --color-error-light: #f8d7da;
-  --color-info: #1971c2;
-  --color-info-light: #d0ebff;
+  --color-success: #317039;      /* Emerald Green */
+  --color-success-light: #d9eedc;
+  --color-warning: #F1BE49;      /* Maximum Yellow */
+  --color-warning-light: #FFF1D4;
+  --color-error: #CC4B24;        /* Dark Pastel Red */
+  --color-error-light: #fde8e3;
+  --color-info: #317039;
+  --color-info-light: #d9eedc;
 
   /* Backgrounds */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-tertiary: #e9ecef;
-  --bg-dark: #1a2332;
-  --bg-accent: #fef5f3;
-  --color-hero-bg: #f5e6d3; /* Fond parchemin chaleureux */
-  --bg-page: #FFFFFF; /* Blanc pur pour cohérence avec hero et projets */
+  --bg-primary: #FFFBEB;         /* Cosmic Latte */
+  --bg-secondary: #FFF1D4;       /* Papaya Whip */
+  --bg-tertiary: #FBEDD9;        /* Antique White */
+  --bg-dark: #1A1A1A;
+  --bg-accent: #f0f7f1;
+  --color-hero-bg: #FBEDD9;      /* Antique White - Fond parchemin */
+  --bg-page: #FBEDD9;            /* Antique White - Fond général */
 
   /* === PALETTE OFFICIELLE === */
-  --color-terre-cuite: #B8441E;
-  --color-encre-nuit: #1A2332;
-  --color-parchemin: #F5E6D3;
-  --color-ambre-forge: #E8924F;
-  --color-charbon: #2D2D2D;
+  --color-terre-cuite: #CC4B24;  /* Dark Pastel Red - CTA */
+  --color-encre-nuit: #1A1A1A;   /* Noir adouci */
+  --color-parchemin: #FBEDD9;    /* Antique White */
+  --color-ambre-forge: #F1BE49;  /* Maximum Yellow */
+  --color-charbon: #1A1A1A;
 
-  /* === ACCENT PRINCIPAL (orange du CTA header) === */
-  --accent-main: var(--color-primary-500); /* #b95a40 - Terre cuite douce */
+  /* === ACCENT PRINCIPAL (Emerald Green pour éléments principaux) === */
+  --accent-main: var(--color-primary-500); /* #317039 - Emerald Green */
 
   /* === SURFACES PRINCIPALES === */
-  --bg-hero: var(--color-parchemin);  /* Hero fond très clair */
-  --bg-section: #FFFFFF;              /* Sections suivantes en blanc pur */
-  --bg-projects: #FFFFFF;             /* Section projets blanche */
-  --bg-body: #F8F5F0;                 /* Fond global si nécessaire */
+  --bg-hero: var(--color-parchemin);  /* Antique White */
+  --bg-section: #FFF1D4;              /* Papaya Whip */
+  --bg-projects: #FFFBEB;             /* Cosmic Latte */
+  --bg-body: #FBEDD9;                 /* Antique White */
 
   /* === FILTRES === */
-  --filter-bg: #FFFFFF;
-  --filter-border: rgba(26, 35, 50, 0.08);
-  --filter-border-hover: rgba(26, 35, 50, 0.18);
-  --filter-bg-active: var(--color-encre-nuit);
+  --filter-bg: #FFFBEB;               /* Cosmic Latte */
+  --filter-border: rgba(26, 26, 26, 0.08);
+  --filter-border-hover: rgba(26, 26, 26, 0.18);
+  --filter-bg-active: var(--color-primary-500);
   --filter-text-default: var(--color-encre-nuit);
   --filter-text-active: #FFFFFF;
-  --bg-page-parchment: #f5e6d3; /* Parchemin explicite */
-  --bg-section-soft: color-mix(in srgb, var(--bg-page) 94%, var(--bg-primary) 6%); /* Fond section plus clair */
-  --bg-section-alt: #F9EFE3; /* Variante plus claire pour alternance */
-  --bg-section-alt-warm: color-mix(in srgb, var(--bg-page) 85%, var(--color-primary-100) 15%); /* Variation chaude pour rythme */
-  --bg-section-alt-cool: color-mix(in srgb, var(--bg-page) 90%, var(--bg-tertiary) 10%); /* Variation neutre fraîche */
-  --bg-section-elevated: color-mix(in srgb, var(--bg-primary) 94%, var(--color-primary-50) 6%); /* Fond légèrement relevé */
-  --bg-section-dark: var(--color-neutral-800); /* Fond sombre Encre Nuit */
+  --bg-page-parchment: #FBEDD9;       /* Antique White */
+  --bg-section-soft: #FFF1D4;         /* Papaya Whip */
+  --bg-section-alt: #FFFBEB;          /* Cosmic Latte */
+  --bg-section-alt-warm: color-mix(in srgb, #FFF1D4 85%, #F1BE49 15%); /* Variation jaune chaud */
+  --bg-section-alt-cool: color-mix(in srgb, #FFFBEB 90%, #d9eedc 10%); /* Variation verte fraîche */
+  --bg-section-elevated: #FFFBEB;     /* Cosmic Latte - Fond légèrement relevé */
+  --bg-section-dark: var(--color-neutral-800); /* Fond sombre */
   --bg-section-gradient: linear-gradient(180deg, var(--color-neutral-800) 0%, var(--color-neutral-900) 100%);
-  --bg-surface: #F2E0CC; /* Container plus dense */
-  --bg-card: #FFFFFF; /* Cartes projets, stats */
-  --bg-card-elevated: var(--bg-primary); /* Blanc pur pour cards surélevées */
-  --bg-footer: #050816; /* Footer profond */
-  --bg-contact: var(--color-neutral-900); /* Contact sombre aplat */
-  --bg-contact-card: #111827; /* Carte formulaire sur fond sombre */
-  --bg-header: #0F172A; /* Header encre nuit premium */
-  --bg-offer-featured: var(--color-primary-500); /* Fond Terre Cuite pour offre premium */
+  --bg-surface: #FBEDD9;              /* Antique White */
+  --bg-card: #FFFBEB;                 /* Cosmic Latte - Cartes */
+  --bg-card-elevated: #FFFBEB;        /* Cosmic Latte */
+  --bg-footer: #0d0d0d;               /* Footer profond */
+  --bg-contact: var(--color-neutral-900);
+  --bg-contact-card: #1A1A1A;
+  --bg-header: #1A1A1A;               /* Header sombre */
+  --bg-offer-featured: var(--color-primary-500); /* Emerald Green pour offre premium */
 
   /* TOKENS PREMIUM 2026 - Hiérarchie des fonds */
-  --bg-white-pure: #FFFFFF;      /* Cartes uniquement */
-  --bg-off-white: #F5F5F7;       /* Gris très chaud - Fond section par défaut */
-  --bg-dark-deep: #0B0F19;       /* Contact / Footer sombre profond */
+  --bg-white-pure: #FFFBEB;      /* Cosmic Latte */
+  --bg-off-white: #FFF1D4;       /* Papaya Whip */
+  --bg-dark-deep: #0d0d0d;       /* Contact / Footer sombre profond */
 
   /* Surfaces & sections */
-  --neutral-charcoal: #2D2D2D; /* Charbon */
+  --neutral-charcoal: #1A1A1A;
 
   /* Surfaces élevées */
-  --surface-elevated: #FFFFFF;
-  --surface-elevated-subtle: rgba(255, 255, 255, 0.92);
+  --surface-elevated: #FFFBEB;   /* Cosmic Latte */
+  --surface-elevated-subtle: rgba(255, 251, 235, 0.92);
 
   /* Sections de page */
-  /* HERO: fond parchemin solide (très clair) sans dégradé */
-  /* Note: --bg-hero redéfini comme solide pour coller au design system */
-  --bg-portfolio: var(--color-neutral-50); /* FAF4ED approx */
-  --bg-testimonials: var(--color-neutral-50);
+  --bg-portfolio: #FFF1D4;       /* Papaya Whip */
+  --bg-testimonials: #FFF1D4;
 
   /* Section contact – dégradé CLAIR → FONCÉ */
   --bg-contact-gradient: linear-gradient(
@@ -145,41 +143,41 @@
     var(--neutral-charcoal) 100%
   );
 
-  /* Hero tokens - Couleurs figées du hero actuel */
-  --hero-bg: var(--color-parchemin); /* #F5E6D3 - Fond parchemin très clair */
-  --hero-signature-color: var(--color-encre-nuit); /* #1A2332 - Signature manuscrite noire/encre */
+  /* Hero tokens */
+  --hero-bg: var(--color-parchemin); /* Antique White */
+  --hero-signature-color: var(--color-encre-nuit); /* Noir adouci */
   --hero-script-color: #FFFFFF;
-  --hero-baseline-color: var(--color-ambre-forge); /* #E8924F - Baseline ambrée */
-  --hero-baseline-accent: var(--color-primary-400);
-  --hero-cta-bg: linear-gradient(135deg, var(--accent-main) 0%, var(--color-primary-400) 100%); /* Dégradé corail/orange */
-  --hero-cta-bg-hover: linear-gradient(135deg, var(--color-primary-600) 0%, var(--accent-main) 100%);
-  --hero-cta-text-color: #FFFFFF; /* Texte blanc sur CTA */
-  --hero-cta-shadow: 0 18px 45px rgba(0, 0, 0, 0.42);
+  --hero-baseline-color: var(--color-ambre-forge); /* Maximum Yellow */
+  --hero-baseline-accent: #F1BE49;
+  --hero-cta-bg: linear-gradient(135deg, #CC4B24 0%, #e65a33 100%); /* Dégradé rouge */
+  --hero-cta-bg-hover: linear-gradient(135deg, #b3421f 0%, #CC4B24 100%);
+  --hero-cta-text-color: #FFFFFF;
+  --hero-cta-shadow: 0 18px 45px rgba(204, 75, 36, 0.42);
 
   /* Surfaces UI */
-  --surface-filter: rgba(26, 35, 50, 0.04);
-  --surface-filter-active: rgba(26, 35, 50, 0.14);
+  --surface-filter: rgba(49, 112, 57, 0.04);
+  --surface-filter-active: rgba(49, 112, 57, 0.14);
 
   /* ============================================
      PROJECTS FILTERS - Shell & Pills premium
      ============================================ */
 
-  /* Shell des filtres - grand cadre arrondi avec dégradé léger */
+  /* Shell des filtres */
   --projects-filters-shell-bg: linear-gradient(
     135deg,
-    rgba(184, 68, 30, 0.04) 0%,   /* Terre cuite très légère */
-    rgba(248, 245, 240, 0.9) 40%,
-    #ffffff 100%
+    rgba(49, 112, 57, 0.04) 0%,   /* Emerald Green très léger */
+    rgba(255, 241, 212, 0.9) 40%,
+    #FFFBEB 100%
   );
-  --projects-filters-shell-border: rgba(184, 68, 30, 0.08);
+  --projects-filters-shell-border: rgba(49, 112, 57, 0.08);
 
-  /* Pills - blanches avec hover lift + glow */
-  --projects-filter-pill-bg: #ffffff;
-  --projects-filter-pill-border: rgba(26, 35, 50, 0.08);
-  --projects-filter-pill-border-hover: rgba(26, 35, 50, 0.18);
+  /* Pills */
+  --projects-filter-pill-bg: #FFFBEB;
+  --projects-filter-pill-border: rgba(26, 26, 26, 0.08);
+  --projects-filter-pill-border-hover: rgba(26, 26, 26, 0.18);
   --projects-filter-pill-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 
-  /* Active pill - dégradé orange identique au CTA hero */
+  /* Active pill - gradient rouge CTA */
   --projects-filter-pill-active-gradient: var(--hero-cta-bg);
   --projects-filter-pill-active-text: #ffffff;
 
@@ -188,45 +186,45 @@
   --shadow-soft-lg: 0 26px 60px rgba(0, 0, 0, 0.20);
 
   /* OMBRE CARTES PREMIUM */
-  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.06); /* Ombre douce diffuse */
-  --shadow-soft: 0 8px 24px rgba(15, 23, 42, 0.08); /* Cards/benefits */
-  --shadow-floating: 0 20px 45px -10px rgba(15, 23, 42, 0.18); /* Cards hover */
-  --surface-card: color-mix(in srgb, var(--bg-page) 96%, var(--bg-primary) 4%);
-  --surface-elevated: color-mix(in srgb, var(--bg-page) 88%, var(--bg-secondary) 12%);
-  --card-surface: var(--bg-white-pure); /* Cartes principales */
-  --card-subtle: color-mix(in srgb, var(--bg-page) 92%, var(--bg-primary) 8%); /* Cartes secondaires */
-  --section-bg-default: var(--color-neutral-50);
-  --section-bg-soft: var(--color-neutral-100);
-  --section-bg-strong: #ffffff;
+  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.06);
+  --shadow-soft: 0 8px 24px rgba(26, 26, 26, 0.08);
+  --shadow-floating: 0 20px 45px -10px rgba(26, 26, 26, 0.18);
+  --surface-card: #FFF1D4;
+  --surface-elevated: #FFFBEB;
+  --card-surface: var(--bg-white-pure);
+  --card-subtle: color-mix(in srgb, #FFF1D4 92%, #FFFBEB 8%);
+  --section-bg-default: #FFF1D4;
+  --section-bg-soft: #FBEDD9;
+  --section-bg-strong: #FFFBEB;
   --section-bg-impact: var(--section-bg-soft);
   --section-bg-a2mo: var(--color-encre-nuit);
-  --section-text-on-dark: #f9fafb;
+  --section-text-on-dark: #FFFBEB;
 
   /* Text Colors */
-  --text-primary: #1a2332;
-  --text-secondary: #495057;
-  --text-tertiary: #6c757d;
+  --text-primary: #1A1A1A;       /* Noir adouci */
+  --text-secondary: #5A5A5A;     /* Gris foncé */
+  --text-tertiary: #7a7a7a;
   --text-inverse: #ffffff;
-  --text-accent: #b95a40;
-  --focus-color: var(--color-ambre-forge);
+  --text-accent: #317039;        /* Emerald Green */
+  --focus-color: #F1BE49;        /* Maximum Yellow */
 
   /* Borders */
-  --border-color: rgba(26, 35, 50, 0.08);
-  --border-color-strong: rgba(26, 35, 50, 0.12);
+  --border-color: rgba(26, 26, 26, 0.08);
+  --border-color-strong: rgba(26, 26, 26, 0.12);
   --border-color-inverse: rgba(255, 255, 255, 0.12);
-  --border-soft: rgba(26, 35, 50, 0.10); /* Bordure douce pour benefits */
-  --border-subtle: rgba(26, 35, 50, 0.06); /* Bordure très subtile */
-  --border-input: rgba(26, 35, 50, 0.25); /* Bordure inputs underline */
+  --border-soft: rgba(26, 26, 26, 0.10);
+  --border-subtle: rgba(26, 26, 26, 0.06);
+  --border-input: rgba(26, 26, 26, 0.25);
 
   /* Text on colored backgrounds */
   --text-on-accent: #ffffff;
   --text-on-dark: #ffffff;
-  --text-muted: var(--color-neutral-500); /* Texte secondaire plus doux */
+  --text-muted: var(--color-neutral-500);
 
   /* Accent Colors */
-  --accent-primary: var(--color-primary-500); /* Terre Cuite */
-  --accent-amber: #f6aa1c; /* Ambre doré */
-  --accent-primary-soft: color-mix(in srgb, var(--color-primary-500) 15%, transparent); /* Pour effets subtils */
+  --accent-primary: var(--color-primary-500); /* Emerald Green */
+  --accent-amber: #F1BE49;       /* Maximum Yellow */
+  --accent-primary-soft: color-mix(in srgb, var(--color-primary-500) 15%, transparent);
 
   /* Slider tokens */
   --slider-track: var(--color-neutral-700);
@@ -276,31 +274,35 @@
   --btn-padding-sm: var(--space-3) var(--space-4);
   --btn-padding-md: var(--space-4) var(--space-6);
   --btn-padding-lg: var(--space-5) var(--space-8);
-  --btn-primary-bg: var(--color-primary-500);
-  --btn-primary-bg-hover: var(--color-primary-600);
-  --btn-primary-bg-active: var(--color-primary-700);
-  /* Boutons primaires avec gradient Terre cuite → Ambre */
-  --btn-primary-gradient: linear-gradient(135deg, var(--color-terre-cuite) 0%, var(--color-ambre-forge) 100%);
-  --btn-primary-gradient-hover: linear-gradient(135deg, #A03A18 0%, var(--color-terre-cuite) 100%);
-  --btn-primary-shadow: 0 12px 28px -8px rgba(184, 68, 30, 0.35);
-  --btn-primary-shadow-hover: 0 18px 40px -8px rgba(184, 68, 30, 0.5);
-  --btn-secondary-border: var(--color-primary-500);
-  --btn-ghost-hover: rgba(185, 90, 64, 0.08);
-  --btn-hero-cta-bg: linear-gradient(135deg, var(--color-terre-cuite) 0%, var(--color-ambre-forge) 100%);
-  --btn-hero-cta-bg-hover: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-500));
-  --btn-hero-cta-text: var(--text-inverse);
-  --btn-hero-cta-border: color-mix(in srgb, var(--color-primary-600) 55%, rgba(255, 255, 255, 0.18));
-  --btn-hero-cta-halo: color-mix(in srgb, var(--color-primary-300) 50%, transparent);
+  /* Boutons primaires : fond #CC4B24 (Dark Pastel Red), texte blanc */
+  --btn-primary-bg: #CC4B24;
+  --btn-primary-bg-hover: #b3421f;
+  --btn-primary-bg-active: #99381a;
+  --btn-primary-gradient: linear-gradient(135deg, #CC4B24 0%, #e65a33 100%);
+  --btn-primary-gradient-hover: linear-gradient(135deg, #b3421f 0%, #CC4B24 100%);
+  --btn-primary-shadow: 0 12px 28px -8px rgba(204, 75, 36, 0.35);
+  --btn-primary-shadow-hover: 0 18px 40px -8px rgba(204, 75, 36, 0.5);
+  /* Boutons secondaires : fond transparent, bordure #317039, texte #317039 */
+  --btn-secondary-border: #317039;
+  --btn-secondary-text: #317039;
+  --btn-secondary-bg-hover: rgba(49, 112, 57, 0.08);
+  --btn-ghost-hover: rgba(49, 112, 57, 0.08);
+  /* Hero CTA - Dark Pastel Red */
+  --btn-hero-cta-bg: linear-gradient(135deg, #CC4B24 0%, #e65a33 100%);
+  --btn-hero-cta-bg-hover: linear-gradient(135deg, #b3421f 0%, #CC4B24 100%);
+  --btn-hero-cta-text: #FFFFFF;
+  --btn-hero-cta-border: color-mix(in srgb, #b3421f 55%, rgba(255, 255, 255, 0.18));
+  --btn-hero-cta-halo: color-mix(in srgb, #f7aa99 50%, transparent);
   --btn-hero-cta-shadow:
-    0 16px 40px -14px color-mix(in srgb, var(--color-primary-400) 80%, transparent),
-    0 0 0 2px color-mix(in srgb, var(--color-primary-200) 70%, transparent);
+    0 16px 40px -14px rgba(204, 75, 36, 0.6),
+    0 0 0 2px rgba(204, 75, 36, 0.25);
   --btn-hero-cta-shadow-hover:
-    0 22px 52px -12px color-mix(in srgb, var(--color-primary-500) 92%, transparent),
-    0 0 0 3px color-mix(in srgb, var(--color-primary-300) 75%, transparent);
-  --offer-featured-border: var(--color-primary-500);
-  --project-tag-bg: color-mix(in srgb, var(--color-primary-50) 65%, var(--bg-primary) 35%);
-  --project-tag-border: color-mix(in srgb, var(--color-primary-200) 55%, transparent);
-  --project-tag-text: color-mix(in srgb, var(--text-primary) 65%, var(--color-primary-700) 35%);
+    0 22px 52px -12px rgba(204, 75, 36, 0.75),
+    0 0 0 3px rgba(204, 75, 36, 0.35);
+  --offer-featured-border: #317039;
+  --project-tag-bg: color-mix(in srgb, #f0f7f1 65%, #FFFBEB 35%);
+  --project-tag-border: color-mix(in srgb, #b3ddb9 55%, transparent);
+  --project-tag-text: color-mix(in srgb, #1A1A1A 65%, #235029 35%);
   --project-tag-gap: var(--space-2);
   --header-height: var(--space-20);
 
@@ -355,20 +357,20 @@
   /* ============================================
      SHADOWS - Subtle Depth
      ============================================ */
-  --shadow-xs: 0 1px 2px 0 rgba(26, 35, 50, 0.05);
-  --shadow-sm: 0 1px 3px 0 rgba(26, 35, 50, 0.1), 0 1px 2px -1px rgba(26, 35, 50, 0.1);
-  --shadow-md: 0 4px 6px -1px rgba(26, 35, 50, 0.1), 0 2px 4px -2px rgba(26, 35, 50, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(26, 35, 50, 0.1), 0 4px 6px -4px rgba(26, 35, 50, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(26, 35, 50, 0.1), 0 8px 10px -6px rgba(26, 35, 50, 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgba(26, 35, 50, 0.25);
-  --shadow-inner: inset 0 2px 4px 0 rgba(26, 35, 50, 0.05);
-  --shadow-soft: 0 8px 24px rgba(15, 23, 42, 0.12); /* Cards projets */
-  --shadow-header-soft: 0 1px 0 rgba(15, 23, 42, 0.12); /* Header flottant */
-  --shadow-elevated: 0 18px 45px rgba(15, 23, 42, 0.28); /* Making-of card */
+  --shadow-xs: 0 1px 2px 0 rgba(26, 26, 26, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(26, 26, 26, 0.1), 0 1px 2px -1px rgba(26, 26, 26, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(26, 26, 26, 0.1), 0 2px 4px -2px rgba(26, 26, 26, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(26, 26, 26, 0.1), 0 4px 6px -4px rgba(26, 26, 26, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(26, 26, 26, 0.1), 0 8px 10px -6px rgba(26, 26, 26, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(26, 26, 26, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(26, 26, 26, 0.05);
+  --shadow-soft: 0 8px 24px rgba(26, 26, 26, 0.12); /* Cards projets */
+  --shadow-header-soft: 0 1px 0 rgba(26, 26, 26, 0.12); /* Header flottant */
+  --shadow-elevated: 0 18px 45px rgba(26, 26, 26, 0.28); /* Making-of card */
 
-  /* Colored Shadows */
-  --shadow-primary: 0 10px 25px -5px rgba(185, 90, 64, 0.15);
-  --shadow-primary-lg: 0 20px 40px -10px rgba(185, 90, 64, 0.2);
+  /* Colored Shadows - Emerald Green based */
+  --shadow-primary: 0 10px 25px -5px rgba(49, 112, 57, 0.15);
+  --shadow-primary-lg: 0 20px 40px -10px rgba(49, 112, 57, 0.2);
 
   /* ============================================
      TRANSITIONS - Smooth Interactions
@@ -1041,7 +1043,7 @@ button,
 .cta--primary:active:not(:disabled) {
   transform: translateY(0) scale(0.98);
   color: var(--text-inverse);
-  box-shadow: 0 4px 12px rgba(184, 68, 30, 0.25);
+  box-shadow: 0 4px 12px rgba(204, 75, 36, 0.25);
 }
 
 .btn__content {
@@ -2245,14 +2247,14 @@ button,
   position: absolute;
   inset: -4px;
   border-radius: calc(var(--radius-xl) + 4px);
-  background: linear-gradient(135deg, rgba(184, 68, 30, 0.2) 0%, rgba(232, 146, 79, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(204, 75, 36, 0.2) 0%, rgba(241, 190, 73, 0.15) 100%);
   z-index: -1;
   filter: blur(8px);
 }
 
 .offer-card--featured:hover {
   transform: scale(1.02) translateY(-4px);
-  box-shadow: 0 25px 55px -12px rgba(184, 68, 30, 0.45);
+  box-shadow: 0 25px 55px -12px rgba(204, 75, 36, 0.45);
 }
 
 /* Badge on featured card */
@@ -2474,7 +2476,7 @@ button,
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(232, 146, 79, 0.16), transparent 60%);
+  background: radial-gradient(circle at 50% 50%, rgba(241, 190, 73, 0.16), transparent 60%);
   pointer-events: none;
 }
 
@@ -2518,7 +2520,7 @@ button,
   aspect-ratio: 16 / 9;
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(185, 90, 64, 0.85), rgba(26, 35, 50, 0.95));
+  background: linear-gradient(135deg, rgba(49, 112, 57, 0.85), rgba(26, 26, 26, 0.95));
   box-shadow: var(--shadow-2xl);
 }
 
@@ -2858,8 +2860,8 @@ button,
   width: 40px;
   height: 40px;
   border-radius: var(--radius-full);
-  background: rgba(185, 90, 64, 0.12);
-  border: 1px solid rgba(185, 90, 64, 0.18);
+  background: rgba(49, 112, 57, 0.12);
+  border: 1px solid rgba(49, 112, 57, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2882,13 +2884,13 @@ button,
 }
 
 .faq__question:hover .faq__icon {
-  background: rgba(185, 90, 64, 0.18);
-  border-color: rgba(185, 90, 64, 0.28);
+  background: rgba(49, 112, 57, 0.18);
+  border-color: rgba(49, 112, 57, 0.28);
 }
 
 .faq__question[aria-expanded='true'] .faq__icon {
-  background: rgba(185, 90, 64, 0.22);
-  border-color: rgba(185, 90, 64, 0.45);
+  background: rgba(49, 112, 57, 0.22);
+  border-color: rgba(49, 112, 57, 0.45);
 }
 
 .faq__question[aria-expanded='true'] .faq__icon::before {
@@ -2901,8 +2903,8 @@ button,
   padding: 0 var(--space-5);
   opacity: 0;
   pointer-events: none;
-  border-top: 1px solid rgba(26, 35, 50, 0.08);
-  background: linear-gradient(180deg, rgba(185, 90, 64, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+  background: linear-gradient(180deg, rgba(49, 112, 57, 0.06) 0%, rgba(255, 251, 235, 0) 100%);
   transition: max-height var(--transition-slow), opacity var(--transition-base), padding var(--transition-base);
   line-height: 1.6;
   color: var(--text-secondary);
@@ -2950,7 +2952,7 @@ button,
 .contact,
 .section-contact {
   position: relative;
-  background: var(--color-encre-nuit, #1A2332); /* Fond Encre de nuit solide */
+  background: var(--color-encre-nuit, #1A1A1A); /* Fond noir adouci */
   color: var(--text-inverse);
   overflow: hidden;
   padding-top: clamp(2.5rem, 5vh, 3.5rem); /* Réduction de l'espace au-dessus */
@@ -3205,7 +3207,7 @@ button,
 .form__select {
   padding-right: var(--space-8);
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='rgba(26,35,50,0.7)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='rgba(26,26,26,0.7)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   background-size: 16px;
@@ -3216,11 +3218,11 @@ button,
 .form__textarea:focus {
   outline: none;
   border-color: var(--color-terre-cuite);
-  box-shadow: 0 0 0 2px rgba(184, 68, 30, 0.25);
+  box-shadow: 0 0 0 2px rgba(204, 75, 36, 0.25);
 }
 
 .form__select:focus {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='rgba(185,90,64,1)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='rgba(49,112,57,1)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
 }
 
 /* Placeholder styling */
@@ -3999,7 +4001,7 @@ button,
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(184, 68, 30, 0.08) 0%, transparent 50%, rgba(232, 146, 79, 0.06) 100%);
+  background: linear-gradient(135deg, rgba(204, 75, 36, 0.08) 0%, transparent 50%, rgba(241, 190, 73, 0.06) 100%);
   z-index: -1;
   opacity: 0;
   transition: opacity var(--transition-base);
@@ -4624,17 +4626,17 @@ section.hero + main,
     transform 200ms ease !important;
 }
 
-/* 2.2 - État ACTIF - Fond blanc, bordure orange, glow premium */
+/* 2.2 - État ACTIF - Fond clair, bordure vert émeraude, glow premium */
 .projects-filter-button:is(.is-active, [aria-pressed="true"]),
 .filter-chip.is-active,
 .projects-filter__option.is-active {
-  background-color: #FFFFFF !important; /* Fond blanc pur comme les cartes */
-  color: #B8441E !important; /* Terre cuite - lisible et élégant */
-  border: 1.5px solid #B8441E !important; /* Bordure orange nette */
+  background-color: #FFFBEB !important; /* Cosmic Latte */
+  color: #317039 !important; /* Emerald Green - lisible et élégant */
+  border: 1.5px solid #317039 !important; /* Bordure verte nette */
 
-  /* Glow moderne premium : halo fin orange + shadow douce */
+  /* Glow moderne premium : halo fin vert + shadow douce */
   box-shadow:
-    0 0 0 1px rgba(184, 68, 30, 0.35),  /* Ring orange fin */
+    0 0 0 1px rgba(49, 112, 57, 0.35),  /* Ring vert fin */
     0 10px 30px rgba(0, 0, 0, 0.06) !important; /* Shadow douce vers le bas */
 
   /* Léger effet "posé" */
@@ -4646,7 +4648,7 @@ section.hero + main,
 .filter-chip.is-active:hover,
 .projects-filter__option.is-active:hover {
   box-shadow:
-    0 0 0 2px rgba(184, 68, 30, 0.4),  /* Ring légèrement plus visible */
+    0 0 0 2px rgba(49, 112, 57, 0.4),  /* Ring légèrement plus visible */
     0 12px 35px rgba(0, 0, 0, 0.08) !important; /* Shadow un peu plus forte */
   transform: translateY(-1px) !important; /* Pas de mouvement supplémentaire */
 }
@@ -4686,13 +4688,13 @@ section.hero + main,
   margin-top: auto !important;
 }
 
-/* 4. SECTION CONTACT - Fond ENCRE NUIT (design original) */
+/* 4. SECTION CONTACT - Fond noir adouci (design original) */
 
-/* 4.1 La section contact garde son fond sombre encre nuit */
+/* 4.1 La section contact garde son fond sombre */
 section.contact,
 .section-contact,
 .contact {
-  background-color: #1A2332 !important; /* Encre nuit - fond sombre */
+  background-color: #1A1A1A !important; /* Noir adouci - fond sombre */
 }
 
 /* 4.2 Textes sur fond sombre - couleurs claires pour lisibilité */
@@ -4715,7 +4717,7 @@ section.contact .contact__card,
 .section-contact .contact__card,
 .contact .contact__card,
 .contact-form-card {
-  background-color: #232B3A !important; /* Bleu sombre légèrement plus clair que section */
+  background-color: #2a2a2a !important; /* Gris sombre légèrement plus clair que section */
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
@@ -4755,9 +4757,9 @@ section.contact .form__select,
 .contact__card .form__input,
 .contact__card .form__textarea,
 .contact__card .form__select {
-  background-color: #F5F6FA !important;
-  color: #1A2332 !important;
-  border: 1px solid rgba(26, 35, 50, 0.15) !important;
+  background-color: #FFFBEB !important;
+  color: #1A1A1A !important;
+  border: 1px solid rgba(26, 26, 26, 0.15) !important;
 }
 
 /* 4.8 Focus - fond blanc */

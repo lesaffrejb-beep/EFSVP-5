@@ -140,7 +140,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--color-primary-500, #b8441e);
+  background: var(--color-primary-500, #CC4B24);
   color: white;
   border: none;
   cursor: pointer;
@@ -155,7 +155,7 @@
 
 .video-player__play-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 16px rgba(184, 68, 30, 0.3);
+  box-shadow: 0 4px 16px rgba(204, 75, 36, 0.3);
 }
 
 .video-player__play-btn:active {
@@ -191,7 +191,7 @@
   left: 0;
   top: 0;
   height: 100%;
-  background: rgba(184, 68, 30, 0.2);
+  background: rgba(204, 75, 36, 0.2);
   border-radius: 3px;
   width: 0%;
   transition: width 0.1s ease;
@@ -202,7 +202,7 @@
   left: 0;
   top: 0;
   height: 100%;
-  background: var(--color-primary-500, #b8441e);
+  background: var(--color-primary-500, #CC4B24);
   border-radius: 3px;
   width: 0%;
   z-index: 1;
@@ -216,7 +216,7 @@
   transform: translateY(-50%);
   width: 12px;
   height: 12px;
-  background: var(--color-primary-500, #b8441e);
+  background: var(--color-primary-500, #CC4B24);
   border-radius: 50%;
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -263,7 +263,7 @@
 
 .video-player__volume-btn:hover {
   background: var(--bg-hover, rgba(0, 0, 0, 0.04));
-  color: var(--text-primary, #1a2332);
+  color: var(--text-primary, #1A1A1A);
 }
 
 .video-player__volume-btn:focus-visible {
@@ -291,7 +291,7 @@
 
 .video-player__fullscreen-btn:hover {
   background: var(--bg-hover, rgba(0, 0, 0, 0.04));
-  color: var(--text-primary, #1a2332);
+  color: var(--text-primary, #1A1A1A);
 }
 
 .video-player__fullscreen-btn:focus-visible {

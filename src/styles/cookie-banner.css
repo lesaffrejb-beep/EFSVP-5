@@ -11,7 +11,7 @@
   left: 0;
   right: 0;
   z-index: var(--z-modal-backdrop);
-  background: linear-gradient(to top, rgba(26, 35, 50, 0.98), rgba(26, 35, 50, 0.96));
+  background: linear-gradient(to top, rgba(26, 26, 26, 0.98), rgba(26, 26, 26, 0.96));
   backdrop-filter: blur(12px);
   border-top: 1px solid var(--border-color-inverse);
   padding: var(--space-6) var(--space-4);
