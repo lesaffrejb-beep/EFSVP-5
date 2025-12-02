@@ -1,0 +1,13 @@
+{
+  "audio": {
+    "enabled": true,
+    "title": "Forges, tout feu tout flamme",
+    "artist": "En français s'il vous plaît",
+    "description": "Ciné-concert live pour les 20 ans du festival",
+    "duration": 600,
+    "files": {
+      "mp3": "/assets/projects/forges-tout-feu-tout-flamme/LIVE_JJ.mp3"
+    },
+    "waveformColor": "var(--color-primary-500)"
+  }
+}

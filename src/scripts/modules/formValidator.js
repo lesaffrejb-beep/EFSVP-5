@@ -1,0 +1,648 @@
+/**
+ * Form Validator Premium
+ * Validation temps réel avec états visuels
+ * Accessibilité WCAG AA
+ */
+
+import { gsap } from 'gsap';
+import { devLog } from '../utils/logger.js';
+
+export class FormValidator {
+  constructor(formElement) {
+    this.form = formElement;
+    this.fields = new Map();
+    this.isSubmitting = false;
+    this.submitBtn = null;
+    this.successFeedback = null;
+    this.defaultButtonLabel = 'Partagez votre histoire';
+    this.defaultIconMarkup = '';
+    this.defaultFeedbackMessage = '';
+    this.feedbackTimeout = null;
+
+    if (!this.form) {
+      console.error('FormValidator: form element not provided');
+      return;
+    }
+
+    this.init();
+  }
+
+  init() {
+    // Get all fields
+    const inputFields = this.form.querySelectorAll('input, textarea, select');
+
+    inputFields.forEach((field) => {
+      this.fields.set(field.id || field.name, {
+        element: field,
+        rules: this.getValidationRules(field),
+        errorElement: this.createErrorElement(field),
+      });
+
+      // Setup real-time validation
+      field.addEventListener('blur', () => this.validateField(field));
+      field.addEventListener('input', () => this.clearError(field));
+
+      // Special handling for different input types
+      if (field.type === 'email') {
+        field.addEventListener(
+          'input',
+          this.debounce(() => {
+            this.validateField(field);
+          }, 500)
+        );
+      }
+    });
+
+    // Budget range slider
+    this.setupRangeSlider();
+
+    // Textarea auto-grow and counter
+    this.setupTextarea();
+
+    // Form submission
+    this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+
+    this.submitBtn = this.form.querySelector('button[type="submit"]');
+    this.successFeedback = this.form.closest('.contact__card')?.querySelector('.contact__feedback');
+    const defaultLabel = this.submitBtn?.querySelector('.btn__text')?.textContent?.trim();
+    if (defaultLabel) {
+      this.defaultButtonLabel = defaultLabel;
+    }
+
+    const defaultIcon = this.submitBtn?.querySelector('.btn__icon');
+    if (defaultIcon) {
+      this.defaultIconMarkup = defaultIcon.innerHTML;
+    }
+
+    if (this.successFeedback) {
+      const feedbackText = this.successFeedback.querySelector('.contact__feedback-text');
+      if (feedbackText) {
+        this.defaultFeedbackMessage = feedbackText.textContent || '';
+      }
+      this.successFeedback.hidden = true;
+      this.successFeedback.setAttribute('aria-hidden', 'true');
+      this.successFeedback.classList.remove('is-visible');
+    }
+  }
+
+  getValidationRules(field) {
+    const rules = [];
+
+    if (field.hasAttribute('required')) {
+      rules.push({ type: 'required', message: 'Ce champ est requis.' });
+    }
+
+    if (field.type === 'email') {
+      rules.push({
+        type: 'email',
+        message: "Format d'email invalide (ex. nom@entreprise.fr).",
+        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      });
+    }
+
+    if (field.pattern) {
+      rules.push({
+        type: 'pattern',
+        message: 'Format invalide. Veuillez vérifier votre saisie.',
+        pattern: new RegExp(field.pattern),
+      });
+    }
+
+    if (field.minLength > 0) {
+      rules.push({
+        type: 'minLength',
+        message: `Minimum ${field.minLength} caractères requis.`,
+        value: field.minLength,
+      });
+    }
+
+    if (field.maxLength > 0) {
+      rules.push({
+        type: 'maxLength',
+        message: `Maximum ${field.maxLength} caractères autorisés.`,
+        value: field.maxLength,
+      });
+    }
+
+    return rules;
+  }
+
+  createErrorElement(field) {
+    const errorId = `${field.id || field.name}-error`;
+    let errorEl = document.getElementById(errorId);
+
+    if (!errorEl) {
+      errorEl = document.createElement('span');
+      errorEl.id = errorId;
+      errorEl.className = 'form__error';
+      errorEl.setAttribute('role', 'alert');
+      errorEl.setAttribute('aria-live', 'polite');
+
+      // Insert after field
+      const parent = field.closest('.form__group');
+      if (parent) {
+        parent.appendChild(errorEl);
+      }
+    }
+
+    // Connect error to field via aria-describedby
+    field.setAttribute('aria-describedby', errorId);
+
+    return errorEl;
+  }
+
+  validateField(field) {
+    const fieldData = this.fields.get(field.id || field.name);
+    if (!fieldData) return true;
+
+    const value = field.value.trim();
+    const rules = fieldData.rules;
+
+    // Check each rule
+    for (const rule of rules) {
+      let isValid = true;
+      const errorMessage = rule.message;
+
+      switch (rule.type) {
+        case 'required':
+          isValid = value.length > 0;
+          break;
+
+        case 'email':
+          isValid = rule.pattern.test(value);
+          break;
+
+        case 'pattern':
+          isValid = rule.pattern.test(value);
+          break;
+
+        case 'minLength':
+          isValid = value.length >= rule.value;
+          break;
+
+        case 'maxLength':
+          isValid = value.length <= rule.value;
+          break;
+      }
+
+      if (!isValid) {
+        this.showError(field, errorMessage);
+        return false;
+      }
+    }
+
+    // All rules passed
+    this.showSuccess(field);
+    return true;
+  }
+
+  showError(field, message) {
+    const fieldData = this.fields.get(field.id || field.name);
+    if (!fieldData) return;
+
+    const parent = field.closest('.form__group');
+    if (parent) {
+      parent.classList.add('form__group--error');
+      parent.classList.remove('form__group--success');
+    }
+
+    field.setAttribute('aria-invalid', 'true');
+    field.classList.add('error');
+
+    // Show error message
+    const errorEl = fieldData.errorElement;
+    errorEl.textContent = message;
+    errorEl.style.display = 'block';
+
+    // Animate error
+    gsap.fromTo(
+      errorEl,
+      { opacity: 0, y: -10 },
+      { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }
+    );
+
+    // Shake field
+    gsap.fromTo(
+      field,
+      { x: -10 },
+      {
+        x: 0,
+        duration: 0.4,
+        ease: 'elastic.out(1, 0.3)',
+        clearProps: 'x',
+      }
+    );
+  }
+
+  showSuccess(field) {
+    const fieldData = this.fields.get(field.id || field.name);
+    if (!fieldData) return;
+
+    const parent = field.closest('.form__group');
+    if (parent) {
+      parent.classList.remove('form__group--error');
+      parent.classList.add('form__group--success');
+    }
+
+    field.setAttribute('aria-invalid', 'false');
+    field.classList.remove('error');
+
+    this.clearError(field);
+
+    // Add checkmark animation
+    const checkmark = parent?.querySelector('.form__checkmark');
+    if (checkmark) {
+      gsap.fromTo(
+        checkmark,
+        { scale: 0, rotate: -180 },
+        { scale: 1, rotate: 0, duration: 0.4, ease: 'back.out(2)' }
+      );
+    }
+  }
+
+  clearError(field) {
+    const fieldData = this.fields.get(field.id || field.name);
+    if (!fieldData) return;
+
+    const errorEl = fieldData.errorElement;
+    if (errorEl) {
+      errorEl.textContent = '';
+      errorEl.style.display = 'none';
+    }
+  }
+
+  async handleSubmit(event) {
+    if (this.isSubmitting) {
+      event.preventDefault();
+      return;
+    }
+
+    this.hideSuccessFeedback();
+
+    // Validate all fields
+    let isValid = true;
+    let firstErrorField = null;
+
+    this.fields.forEach((fieldData) => {
+      const field = fieldData.element;
+
+      if (!this.validateField(field)) {
+        isValid = false;
+
+        if (!firstErrorField) {
+          firstErrorField = field;
+        }
+      }
+    });
+
+    if (!isValid) {
+      event.preventDefault(); // Prevent submission only if validation fails
+
+      // Focus first error field
+      if (firstErrorField) {
+        firstErrorField.focus();
+
+        // Scroll to field smoothly
+        firstErrorField.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      }
+
+      // Shake submit button
+      gsap.fromTo(
+        this.submitBtn,
+        { x: -5 },
+        {
+          x: 0,
+          duration: 0.4,
+          ease: 'elastic.out(1, 0.3)',
+          repeat: 2,
+          yoyo: true,
+        }
+      );
+
+      return;
+    }
+
+    // All valid - let the form submit naturally to Formspree
+    // No preventDefault, no custom fetch - browser will handle the submission
+    devLog('📮 Formulaire validé, soumission à Formspree en cours');
+  }
+
+  async submitToAPI(data) {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 10000);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data),
+        signal: controller.signal,
+      });
+
+      if (!response.ok) {
+        let errorMessage = 'Envoi impossible. Merci de réessayer dans un instant.';
+        try {
+          const errorData = await response.json();
+          if (errorData?.error) {
+            errorMessage = errorData.error;
+          }
+        } catch (parseError) {
+          devLog('contact form: unable to parse error response', parseError);
+        }
+
+        throw new Error(errorMessage);
+      }
+
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      if (error?.name === 'AbortError') {
+        throw new Error("Délai dépassé. Merci de réessayer dans quelques instants.");
+      }
+      throw error;
+    } finally {
+      window.clearTimeout(timeout);
+    }
+  }
+
+  setButtonState(state) {
+    if (!this.submitBtn) return;
+
+    const text = this.submitBtn.querySelector('.btn__text');
+    const loader = this.submitBtn.querySelector('.btn__loader');
+    const icon = this.submitBtn.querySelector('.btn__icon');
+
+    // Reset all
+    this.submitBtn.classList.remove('loading', 'success', 'error');
+    if (text) text.style.display = '';
+    if (loader) loader.style.display = 'none';
+    if (icon) icon.style.display = '';
+
+    switch (state) {
+      case 'loading':
+        this.submitBtn.classList.add('loading');
+        this.submitBtn.disabled = true;
+        if (text) text.style.display = 'none';
+        if (icon) icon.style.display = 'none';
+        if (loader) loader.style.display = 'block';
+        break;
+
+      case 'success':
+        this.submitBtn.classList.add('success');
+        this.submitBtn.disabled = true;
+        if (text) text.textContent = 'Envoyé !';
+        if (icon) {
+          icon.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+          `;
+          icon.style.display = '';
+        }
+        break;
+
+      case 'error':
+        this.submitBtn.classList.add('error');
+        this.submitBtn.disabled = false;
+        if (text) text.textContent = 'Erreur - Réessayer';
+        break;
+
+      case 'default':
+      default:
+        this.submitBtn.disabled = false;
+        if (text) text.textContent = this.defaultButtonLabel;
+        if (icon) {
+          if (this.defaultIconMarkup) {
+            icon.innerHTML = this.defaultIconMarkup;
+          } else {
+            icon.innerHTML = `
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            `;
+          }
+          icon.style.display = '';
+        }
+        break;
+    }
+  }
+
+  showSuccessFeedback(data = {}, submissionMeta = {}) {
+    if (!this.successFeedback) return;
+
+    clearTimeout(this.feedbackTimeout);
+
+    const nameSpan = this.successFeedback.querySelector('[data-feedback-name]');
+    if (nameSpan) {
+      const firstName = data.nom ? data.nom.trim().split(' ')[0] : '';
+      if (firstName) {
+        nameSpan.textContent = ` ${firstName}`;
+        nameSpan.removeAttribute('hidden');
+      } else {
+        nameSpan.textContent = '';
+        nameSpan.setAttribute('hidden', '');
+      }
+    }
+
+    this.successFeedback.hidden = false;
+    this.successFeedback.setAttribute('aria-hidden', 'false');
+
+    const feedbackText = this.successFeedback.querySelector('.contact__feedback-text');
+    if (feedbackText) {
+      if (submissionMeta?.message) {
+        feedbackText.textContent = submissionMeta.message;
+      } else if (this.defaultFeedbackMessage) {
+        feedbackText.textContent = this.defaultFeedbackMessage;
+      }
+    }
+
+    requestAnimationFrame(() => {
+      this.successFeedback.classList.add('is-visible');
+    });
+
+    this.feedbackTimeout = setTimeout(() => {
+      this.hideSuccessFeedback();
+    }, 8000);
+  }
+
+  hideSuccessFeedback() {
+    if (!this.successFeedback) return;
+
+    clearTimeout(this.feedbackTimeout);
+    this.feedbackTimeout = null;
+
+    this.successFeedback.classList.remove('is-visible');
+    this.successFeedback.setAttribute('aria-hidden', 'true');
+
+    setTimeout(() => {
+      if (this.successFeedback && !this.successFeedback.classList.contains('is-visible')) {
+        this.successFeedback.hidden = true;
+      }
+    }, 250);
+  }
+
+  showErrorToast(error) {
+    // Show error toast instead of modal with specific message
+    const toast = document.createElement('div');
+    toast.className = 'error-toast error-toast--visible';
+    toast.setAttribute('role', 'alert');
+
+    // Determine specific error message
+    let errorMessage = 'Veuillez réessayer dans quelques instants.';
+    if (error && error.message) {
+      if (error.message.includes('network') || error.message.includes('fetch')) {
+        errorMessage = 'Envoi impossible (problème réseau). Vérifiez votre connexion et réessayez.';
+      } else if (error.message.includes('timeout')) {
+        errorMessage = "Délai d'attente dépassé. Réessayez dans quelques minutes.";
+      }
+    }
+
+    toast.innerHTML = `
+      <div class="error-toast__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="15" y1="9" x2="9" y2="15"></line>
+          <line x1="9" y1="9" x2="15" y2="15"></line>
+        </svg>
+      </div>
+      <div class="error-toast__content">
+        <p class="error-toast__title">Erreur d'envoi</p>
+        <p class="error-toast__message">${errorMessage}</p>
+      </div>
+    `;
+
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+      toast.classList.remove('error-toast--visible');
+      setTimeout(() => toast.remove(), 300);
+    }, 4000);
+  }
+
+  setupRangeSlider() {
+    const slider = this.form.querySelector('.form__range');
+    if (!slider) return;
+
+    const output = this.form.querySelector('.form__range-value');
+    if (!output) return;
+
+    const minValue = parseInt(slider.min);
+    const maxValue = parseInt(slider.max);
+
+    const formatBudget = (value) =>
+      value >= maxValue ? `${maxValue.toLocaleString('fr-FR')} € +` : `~${value.toLocaleString('fr-FR')}€`;
+
+    const updateValue = () => {
+      const value = parseInt(slider.value);
+      output.textContent = formatBudget(value);
+
+      // Update slider gradient
+      const percent = ((value - minValue) / (maxValue - minValue)) * 100;
+      slider.style.setProperty('--value', `${percent}%`);
+    };
+
+    slider.addEventListener('input', updateValue);
+    updateValue(); // Initial value
+  }
+
+  setupTextarea() {
+    const textarea = this.form.querySelector('.form__textarea');
+    if (!textarea) return;
+
+    const counter = this.form.querySelector('.form__counter');
+
+    // Auto-grow
+    textarea.addEventListener('input', () => {
+      textarea.style.height = 'auto';
+      textarea.style.height = textarea.scrollHeight + 'px';
+
+      // Update counter
+      if (counter) {
+        const current = textarea.value.length;
+        const max = textarea.maxLength;
+        counter.textContent = `${current}/${max}`;
+
+        // Warning when close to max
+        if (max && current > max * 0.9) {
+          counter.style.color = '#B8441E';
+        } else {
+          counter.style.color = '';
+        }
+      }
+    });
+  }
+
+  resetAllFields() {
+    this.fields.forEach((fieldData) => {
+      const field = fieldData.element;
+      const parent = field.closest('.form__group');
+
+      if (parent) {
+        parent.classList.remove('form__group--error', 'form__group--success');
+      }
+
+      field.classList.remove('error');
+      field.removeAttribute('aria-invalid');
+
+      this.clearError(field);
+    });
+
+    // Reset counter
+    const counter = this.form.querySelector('.form__counter');
+    if (counter) {
+      counter.textContent = '0/500';
+    }
+
+    // Reset range slider
+    const slider = this.form.querySelector('.form__range');
+    const output = this.form.querySelector('.form__range-value');
+    if (slider && output) {
+      slider.value = slider.defaultValue || slider.getAttribute('value');
+      const sliderValue = parseInt(slider.value);
+      const minValue = parseInt(slider.min);
+      const maxValue = parseInt(slider.max);
+      output.textContent =
+        sliderValue >= maxValue
+          ? `${maxValue.toLocaleString('fr-FR')} € +`
+          : `~${sliderValue.toLocaleString('fr-FR')}€`;
+
+      const percent = ((sliderValue - minValue) / (maxValue - minValue)) * 100;
+      slider.style.setProperty('--value', `${percent}%`);
+    }
+  }
+
+  // Utility: debounce function
+  debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  // Public method to validate form programmatically
+  validate() {
+    let isValid = true;
+
+    this.fields.forEach((fieldData) => {
+      if (!this.validateField(fieldData.element)) {
+        isValid = false;
+      }
+    });
+
+    return isValid;
+  }
+
+  // Cleanup
+  destroy() {
+    this.fields.clear();
+    this.form = null;
+  }
+}

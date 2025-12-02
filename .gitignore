@@ -1,0 +1,19 @@
+# Node & Vite artifacts
+node_modules/
+dist/
+.vite/
+*.log
+
+# Editor directories
+.vscode/
+.idea/
+.DS_Store
+
+# Local environment overrides
+.env*
+
+# Audio assets (project folders are versioned with their content)
+public/assets/audio/*
+!public/assets/audio/.gitkeep
+!public/assets/audio/projects/
+!public/assets/audio/projects/**

@@ -1,0 +1,13 @@
+{
+  "audio": {
+    "enabled": true,
+    "title": "A2MO - Medley",
+    "artist": "En français s'il vous plaît",
+    "description": "Concert interactif pour les 30 ans d'A2MO",
+    "duration": 1200,
+    "files": {
+      "mp3": "/assets/projects/a2mo/medlay_A2MO.mp3"
+    },
+    "waveformColor": "var(--color-primary-500)"
+  }
+}

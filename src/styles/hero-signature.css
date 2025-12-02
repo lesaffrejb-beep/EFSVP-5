@@ -1,0 +1,722 @@
+/* ========================================
+   HERO SIGNATURE - PREMIUM AWWWARDS 2025
+   Design System: Stripe/Linear/Apple inspired
+   ----------------------------------------
+   Plan (avril 2025)
+   - Doubler la présence du SVG (desktop/tablette/mobile)
+   - Refonte CTA hero : bouton glow token-based + focus WCAG
+   - Garder centrage et douceur des animations existantes
+   ======================================== */
+
+/* ========================================
+   DESIGN TOKENS - COULEURS
+   ======================================== */
+
+:root {
+  /* Palette neutre sophisticated */
+  --color-hero-bg: #F5F3F0;           /* Beige clair */
+  --color-text-primary: #1A1A1A;      /* Presque noir */
+  --color-text-secondary: #6B6B6B;    /* Gris moyen */
+  --color-text-tertiary: #9A9A9A;     /* Gris clair */
+
+  /* Ombres dédiées au CTA hero (full orange, sans noir) */
+  --shadow-hero-cta: 0 16px 32px rgba(224, 120, 85, 0.28);
+  --shadow-hero-cta-strong: 0 24px 48px rgba(224, 120, 85, 0.42);
+
+  /* Couleur accent (orange) */
+  --color-primary: #E07855;           /* Orange accent */
+  --color-primary-hover: #D06744;     /* Orange plus foncé */
+  --color-primary-rgb: 224, 120, 85;
+
+  /* Navbar existante (référence) */
+  --color-bg-dark: #2B3945;           /* Navbar background */
+}
+
+/* ========================================
+   DESIGN TOKENS - SPACING SCALE
+   ======================================== */
+
+:root {
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+  --space-32: 8rem;     /* 128px */
+
+  /* Spacing sémantiques HERO (centrage vertical) */
+  --hero-padding-top: var(--space-6);
+  --hero-padding-bottom: var(--space-12);
+  --hero-padding-inline: var(--space-6);
+  /* Spacing réduit pour remonter le sous-titre + CTA près de la signature */
+  --hero-animation-to-baseline: clamp(var(--space-1), 0.45vh, var(--space-2));
+  --hero-baseline-to-cta: clamp(var(--space-1), 0.6vh, var(--space-2));
+  --hero-signature-stack-gap: clamp(var(--space-1), 0.8vh, var(--space-2));
+  --hero-stack-overlap: clamp(1rem, 2.2vh, 2.25rem);
+  --hero-text-gap: clamp(0.35rem, 0.9vh, 0.85rem);
+}
+
+/* ========================================
+   DESIGN TOKENS - TYPOGRAPHY
+   ======================================== */
+
+:root {
+  /* Baseline description */
+  --text-hero-baseline-size: clamp(1.0625rem, 2vw, 1.375rem);
+  --text-hero-baseline-weight: 400;
+  --text-hero-baseline-line-height: 1.5;
+  --text-hero-baseline-letter-spacing: 0.01em;
+
+  /* CTA */
+  --text-cta-size: 1.0625rem;        /* 17px */
+  --text-cta-weight: 500;
+  --text-cta-letter-spacing: 0.02em;
+}
+
+/* ========================================
+   HERO LAYOUT - PREMIUM CENTRÉ
+   ======================================== */
+
+.hero.hero--signature,
+.hero-section {
+  /* ✅ FULL HEIGHT ENFORCEMENT - Fix white strip */
+  height: 100svh;
+  min-height: 100svh;
+  max-height: none;
+  margin: 0;
+  margin-bottom: 0 !important; /* Supprime tout liserai entre hero et projets */
+  padding: 0;
+  padding-bottom: 0 !important; /* Aucun padding en bas */
+  border-bottom: none !important; /* Aucune bordure */
+
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  /* Style - Fond BLANC PUR obligatoire (fix liseré beige) */
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  overflow: hidden;
+  isolation: isolate;
+  z-index: 10;
+  scroll-margin-top: var(--header-height);
+}
+
+@media (max-width: 767px) {
+  .hero.hero--signature {
+    padding-bottom: calc(4rem + 56px) !important;
+  }
+}
+
+/* Narrative vertical line - fil narratif (désactivée) */
+.hero.hero--signature::before {
+  display: none;
+}
+
+.hero__inner {
+  width: min(100%, var(--layout-max-width, 72rem));
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  /* ✅ BREATHING ROOM - Viewport-based gap */
+  gap: 4vh;
+
+  text-align: center;
+}
+
+.hero__content {
+  display: contents;
+}
+
+.hero__animation {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding-bottom: 0;
+  margin-bottom: var(--space-4);
+}
+
+/* ========================================
+   SIGNATURE BLOCK - CENTRÉ
+   ======================================== */
+
+.hero-signature-block {
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* H1 caché visuellement (sr-only) pour SEO/accessibilité */
+.hero-title,
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ========================================
+   SIGNATURE SVG - IMPOSANTE ET \u00c9L\u00c9GANTE
+   ======================================== */
+
+.hero-signature-wrapper {
+  position: relative;
+
+  /* ✅ SIGNATURE SIZING - IMMENSE & CENTERED */
+  /* ✅ UPGRADED: 92vw for more presence, 2400px max for ultra-wide screens */
+  width: min(92vw, 2400px);
+  margin: 0 auto;
+  padding: 0;
+  height: auto !important;
+  max-height: none !important;
+
+  /* ✅ Perfect centering */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-signature-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  /* ✅ REMOVED max-height constraint to let signature be HUGE */
+  min-height: 150px;
+  overflow: visible;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: none;
+
+  /* ✅ Ensure proper aspect ratio is maintained */
+  object-fit: contain;
+}
+
+.hero__baseline,
+.hero__cta {
+  /* ✅ CRITICAL: Initial hidden state to prevent flash before GSAP animation */
+  /* FIXED: Removed !important to allow GSAP to override these values */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  will-change: opacity, transform, visibility;
+}
+
+/* Classe d'initialisation pour masquer les paths pendant le setup JS */
+.hero-signature-svg.is-initializing .hero-signature-path {
+  opacity: 0;
+}
+
+/* Path de la signature manuscrite - Encre de nuit sur fond clair (token hero) */
+.hero-signature-path {
+  fill: none;
+  stroke: var(--hero-signature-color, var(--color-encre-nuit, #1A2332));
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  will-change: stroke-dashoffset;
+}
+
+/* Classe utilitaire pour forcer la signature en encre nuit (token hero) */
+.hero-signature,
+.hero-signature path {
+  stroke: var(--hero-signature-color, var(--color-encre-nuit, #1A2332));
+  fill: transparent;
+}
+
+/* ========================================
+   BASELINE - CENTRÉ ET MINIMALISTE
+   ======================================== */
+
+.hero__baseline,
+.hero-subtitle,
+.hero-signature-caption {
+  /* Texte principal : Plus Jakarta Sans, couleur sombre lisible */
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.1 !important;
+  letter-spacing: -0.01em;
+  color: var(--color-encre-nuit, #1A2332); /* Encre nuit - lisible sur parchemin */
+  text-shadow: none;
+  max-width: 52ch;
+
+  /* ✅ MARGES ZÉRO - le spacing est géré par .hero__text-stack gap */
+  margin: 0 !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  /* ✅ SPECIFIC ADJUSTMENT - Separate baseline from CTA */
+  margin-bottom: 2rem !important;
+
+  text-align: center;
+  padding: 0 !important;
+  text-wrap: balance;
+
+  /* ✅ REMOVED transition on opacity - conflicts with GSAP animation */
+  /* Baseline entry animation is handled by GSAP timeline in hero-signature.js */
+
+  /* Anti-aliasing parfait */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hero:hover .hero__baseline {
+  opacity: 1;
+}
+
+/* Baseline accents - Orange sans changement de police (harmonisation) */
+.hero__baseline em,
+.hero__baseline strong,
+.hero__baseline .accent {
+  /* Police identique au reste du texte - pas de changement de famille */
+  font-family: inherit;
+  font-style: normal; /* Pas d'italique */
+  font-weight: 400; /* Même poids que le texte de base */
+  color: var(--color-terre-cuite, #B8441E); /* Terre cuite pour accent */
+}
+
+.hero__text-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* ✅ GAP entre texte et CTA - increased for more breathing room */
+  gap: var(--space-6) !important;
+
+  /* ✅ POSITION RELATIVE pour flow normal */
+  position: relative;
+
+  width: min(100%, 720px);
+
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+
+  z-index: 2;
+}
+
+.hero__text-stack .hero__baseline {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.hero__text-stack .hero__cta {
+  /* ✅ MARGE MINIMALE */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* ========================================
+   CTA HERO - Glow orange pur (ZÉRO noir)
+   ======================================== */
+
+.btn-hero,
+.btn-hero:link,
+.btn-hero:visited,
+.hero__cta,
+.hero__cta.btn {
+  /* Layout */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3, 12px);
+  padding: var(--space-5, 20px) var(--space-12, 48px);
+  margin-top: var(--space-4, 16px);
+  min-height: 56px;
+  min-width: 48px;
+
+  /* Style - Hero CTA with gradient Terre cuite → Ambre */
+  background: var(--btn-primary-gradient, linear-gradient(135deg, #B8441E 0%, #E8924F 100%));
+  color: var(--text-inverse, #FFFFFF);
+  font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border: none;
+  border-radius: var(--radius-lg, 16px);
+  cursor: pointer;
+
+  /* Box-shadow premium - OMBRE TERRE CUITE */
+  box-shadow: var(--btn-primary-shadow, 0 12px 28px -8px rgba(184, 68, 30, 0.35)) !important;
+
+  /* ✅ REMOVED transform transition - conflicts with GSAP entry animation */
+  /* CTA entry animation (opacity, y, scale) is handled by GSAP timeline in hero-signature.js */
+  /* Transitions kept ONLY for hover/focus states (see below) */
+  transition: none;
+
+  /* Accessibilité tactile */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+
+  /* Z-index & isolation */
+  z-index: 10;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* CRITIQUE : Suppression des pseudo-éléments parasites qui ajoutent des ombres noires */
+.btn-hero::after,
+.hero__cta::after {
+  display: none !important;
+}
+
+/* Pseudo-élément pour effet halo subtil permanent */
+.btn-hero::before,
+.hero__cta::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    rgba(184, 68, 30, 0.12) 0%,
+    rgba(232, 146, 79, 0.06) 40%,
+    transparent 70%
+  );
+  opacity: 1;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(12px);
+}
+
+.btn-hero:hover::before,
+.hero__cta:hover::before {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* Hover - Glow Terre cuite amplifié */
+.btn-hero:hover,
+.hero__cta:hover,
+.hero__cta.btn:hover {
+  transform: translateY(-2px);
+  background: var(--btn-primary-gradient-hover, linear-gradient(135deg, #A03A18 0%, #B8441E 100%));
+  box-shadow: var(--btn-primary-shadow-hover, 0 18px 40px -8px rgba(184, 68, 30, 0.5)) !important;
+  filter: brightness(1.03);
+  /* ✅ Transition ONLY for hover state (not for entry animation) */
+  transition:
+    transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    background 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    filter 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active - Enfoncé */
+.btn-hero:active,
+.hero__cta:active,
+.hero__cta.btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 4px 12px rgba(184, 68, 30, 0.25) !important;
+  /* ✅ Fast transition for active state */
+  transition:
+    transform 100ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus visible (accessibilité WCAG AA) */
+.btn-hero:focus-visible,
+.hero__cta:focus-visible,
+.hero__cta.btn:focus-visible {
+  outline: 2px solid var(--color-terre-cuite, #B8441E);
+  outline-offset: 3px;
+  box-shadow: var(--btn-primary-shadow, 0 12px 28px -8px rgba(184, 68, 30, 0.35)) !important;
+  /* ✅ Transition for focus state */
+  transition:
+    outline 150ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Classes supplémentaires (compatibilité) */
+.btn-hero--cta {
+  box-shadow: 0 4px 30px rgba(var(--color-primary-rgb, 224, 120, 85), 0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-hero--cta:hover {
+  box-shadow: 0 6px 40px rgba(var(--color-primary-rgb, 224, 120, 85), 0.6);
+}
+
+.hero-cta__label {
+  position: relative;
+  z-index: 2;
+  display: block;
+}
+
+/* ========================================
+   RESPONSIVE PREMIUM - MOBILE (< 640px)
+   ======================================== */
+
+@media (max-width: 639px) {
+  .hero.hero--signature {
+    /* ✅ Keep full height on mobile too */
+    height: 100svh;
+    min-height: 100svh;
+    padding: var(--space-6);
+  }
+
+  .hero__inner {
+    /* Auto height for inner to allow flex centering */
+    height: auto;
+    gap: 3vh; /* Slightly reduced gap on mobile */
+  }
+
+  .hero__content {
+    gap: var(--space-6) !important;
+    padding: 0 !important;
+  }
+
+  .hero__animation {
+    max-width: 100%;
+    padding-bottom: 0;
+  }
+
+  .hero-signature-wrapper {
+    max-width: min(100%, 32rem) !important;
+    transform: none !important;
+    margin-bottom: var(--space-3) !important;
+  }
+
+  .hero-signature-svg {
+    max-height: none;
+    transform: none !important;
+  }
+
+  .hero__text-stack {
+    position: relative;
+    transform: none;
+    width: 100%;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    gap: var(--space-8) !important;
+    padding: 0 !important;
+  }
+
+  .hero__baseline,
+  .hero-subtitle,
+  .hero-signature-caption {
+    /* ✅ MARGES ZÉRO - spacing géré par gap */
+    margin: 0 !important;
+    font-size: 1rem !important;
+    line-height: 1.4;
+    max-width: 100%;
+  }
+
+  .btn-hero,
+  .hero__cta,
+  .hero__cta.btn {
+    min-height: 44px;
+    padding: 14px 24px;
+    font-size: 1rem;
+    margin-top: 0 !important;
+  }
+}
+
+/* ========================================
+   RESPONSIVE PREMIUM - TABLETTE (640px - 1023px)
+   ======================================== */
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hero__animation,
+  .hero-signature-wrapper {
+    /* ✅ UPGRADED: 56rem (896px) instead of 42rem (672px) for more impact */
+    max-width: min(100%, 56rem);
+  }
+
+  .hero__text-stack {
+    margin-top: 0 !important;
+    gap: var(--space-6) !important;
+  }
+
+  .hero__baseline,
+  .hero-subtitle,
+  .hero-signature-caption {
+    font-size: clamp(0.95rem, 2vw, 1.25rem) !important; /* ✅ Responsive */
+    margin: 0 !important; /* ✅ Spacing géré par gap */
+  }
+}
+
+/* ========================================
+   RESPONSIVE PREMIUM - DESKTOP (\u2265 1024px)
+   ======================================== */
+
+@media (min-width: 1024px) {
+  .hero__animation,
+  .hero-signature-wrapper {
+    /* ✅ UPGRADED: 72rem (1152px) instead of 48rem (768px) for HUGE impact on desktop */
+    max-width: 72rem;
+  }
+
+  .hero__baseline,
+  .hero-subtitle,
+  .hero-signature-caption {
+    font-size: 1.5rem !important; /* ✅ 24px - bien lisible */
+    max-width: 50ch;
+  }
+
+  .btn-hero {
+    font-size: 1.125rem;
+    padding: var(--btn-padding-lg);
+  }
+}
+
+/* ========================================
+   HERO - OVERRIDES REMOVED
+   Architecture is now handled in the main section
+   ======================================== */
+
+/* ========================================
+   RESPONSIVE PREMIUM - TRÈS PETIT MOBILE (< 475px)
+   ======================================== */
+
+@media (max-width: 475px) {
+  .hero.hero--signature {
+    /* ✅ Keep full height on very small mobile */
+    height: 100svh;
+    min-height: 100svh;
+    padding: var(--space-5);
+  }
+
+  .hero__inner {
+    height: auto;
+    gap: 2.5vh; /* Even smaller gap for tiny screens */
+  }
+
+  .hero-signature-wrapper {
+    max-width: min(100%, 28rem) !important;
+    transform: none !important;
+    margin-bottom: var(--space-3) !important;
+  }
+
+  .hero-signature-svg {
+    transform: none !important;
+  }
+
+  .hero__text-stack {
+    margin-top: 0 !important;
+    gap: var(--space-3) !important;
+  }
+
+  .hero__baseline,
+  .hero-subtitle,
+  .hero-signature-caption {
+    font-size: 0.95rem !important;
+    /* ✅ MARGES ZÉRO - spacing géré par gap */
+    margin: 0 !important;
+  }
+}
+
+/* ========================================
+   PREFERS REDUCED MOTION (CRITIQUE ACCESSIBILIT\u00c9)
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-signature-path {
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
+    opacity: 1 !important;
+  }
+
+  .hero-subtitle,
+  .hero-signature-caption {
+    opacity: 1 !important;
+  }
+
+  .btn-hero,
+  .hero__cta,
+  .hero-cta,
+  .hero-cta--ink {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-signature-wrapper {
+    transform: none !important;
+  }
+
+  .hero-signature-svg {
+    transform: none !important;
+  }
+}
+
+/* ========================================
+   SECTIONS SUIVANTES : CONTEXTE DE STACKING
+   ======================================== */
+
+/* Garantir que les sections après le hero ne sont pas masquées */
+.hero--signature ~ section,
+.hero--signature + section {
+  position: relative;
+  z-index: 10;
+}
+
+/* ========================================
+   OPTION NUCLÉAIRE - FORCE 100VH STRICT
+   ======================================== */
+
+/* Force absolue : le hero DOIT faire 100vh exactement (opt-in) */
+.hero.force-fullscreen,
+.hero.hero--signature.force-fullscreen,
+section.hero.force-fullscreen,
+section#hero.force-fullscreen {
+  /* Force 100vh strict avec overflow caché */
+  height: 100vh !important;
+  min-height: 100vh !important;
+  max-height: 100vh !important;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}
+
+/* Reset brutal de tous les enfants pour éliminer padding/margin parasites */
+.hero * {
+  box-sizing: border-box;
+}
+
+/* Garantit que rien ne déborde du hero */
+.hero__inner,
+.hero__content {
+  max-height: 100%;
+  overflow: visible; /* Permet les shadows du CTA */
+}
+
+/* ========================================
+   HERO - DUPLICATE SECTION REMOVED
+   All styling is now unified in the main section above
+   ======================================== */

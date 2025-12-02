@@ -1,0 +1,90 @@
+{
+  "$schema": "Template de metadata pour un projet EfSVP",
+  "_comment": "Utiliser le slug (id) pour nommer les dossiers médias : images/videos/audio/projects/<slug>/...",
+
+  "id": "slug-du-projet",
+  "title": "Titre du projet",
+  "client": "Nom du client",
+  "year": 2025,
+  "location": "Ville",
+  "status": "delivered",
+
+  "cover": {
+    "initials": "XX",
+    "gradient": {
+      "from": "var(--color-primary-500)",
+      "to": "var(--color-neutral-700)"
+    }
+  },
+
+  "shortDescription": "Description courte du projet (max 400 caractères)",
+  "longDescription": [
+    "Premier paragraphe de la description longue du projet.",
+    "Deuxième paragraphe avec plus de détails.",
+    "Chaque élément du tableau est un paragraphe."
+  ],
+
+  "category": "concert live | spectacle | musique | ciné-concert | etc.",
+  "sector": "artisanat | btp | environnement | institutionnel | patrimoine | social | spectacle-vivant | transport | vie-associative",
+
+  "themes": [
+    "Thème 1",
+    "Thème 2",
+    "Thème 3"
+  ],
+
+  "details": {
+    "format": "Format du projet",
+    "duration": "Durée (ex: 10 minutes, 1 heure)",
+    "audience": "Public cible",
+    "deliverables": [
+      "Livrable 1",
+      "Livrable 2"
+    ]
+  },
+
+  "team": [
+    "Membre 1",
+    "Membre 2",
+    "Membre 3"
+  ],
+
+  "partners": [
+    "Partenaire 1"
+  ],
+
+  "media": {
+    "coverImage": "/assets/images/projects/slug-du-projet/cover.jpg",
+    "gallery": ["/assets/images/projects/slug-du-projet/detail-01.jpg"],
+    "video": "/assets/videos/projects/slug-du-projet/teaser.mp4",
+    "audio": "/assets/audio/projects/slug-du-projet/excerpt.mp3"
+  },
+
+  "_comment_audio_video": "Les champs audio/video ci-dessous sont optionnels. Si remplis, la vidéo est prioritaire sur l'audio.",
+
+  "audio": {
+    "enabled": false,
+    "title": "Titre de la piste audio",
+    "artist": "EfSVP Studio",
+    "duration": 180,
+    "files": {
+      "mp3": "/assets/audio/projects/slug-du-projet/excerpt.mp3",
+      "ogg": "/assets/audio/projects/slug-du-projet/excerpt.ogg"
+    },
+    "waveformColor": "var(--color-primary-500)",
+    "description": "Description de la piste audio (optionnel)"
+  },
+
+  "video": {
+    "enabled": false,
+    "title": "Titre de la vidéo",
+    "duration": 120,
+    "files": {
+      "mp4": "/assets/videos/projects/slug-du-projet/teaser.mp4",
+      "webm": "/assets/videos/projects/slug-du-projet/teaser.webm"
+    },
+    "poster": "/assets/images/projects/slug-du-projet/cover.jpg",
+    "autoplay": false,
+    "description": "Description de la vidéo (optionnel)"
+  }
+}
