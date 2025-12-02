@@ -383,13 +383,10 @@
   --shadow-xl: 0 20px 25px -5px rgba(26, 26, 26, 0.1), 0 8px 10px -6px rgba(26, 26, 26, 0.1);
   --shadow-2xl: 0 25px 50px -12px rgba(26, 26, 26, 0.25);
   --shadow-inner: inset 0 2px 4px 0 rgba(26, 26, 26, 0.05);
-  --shadow-soft: 0 8px 24px rgba(26, 26, 26, 0.12); /* Cards projets */
   --shadow-header-soft: 0 1px 0 rgba(26, 26, 26, 0.12); /* Header flottant */
   --shadow-elevated: 0 18px 45px rgba(26, 26, 26, 0.28); /* Making-of card */
 
   /* Colored Shadows - Emerald Green based */
-  --shadow-primary: 0 10px 25px -5px rgba(49, 112, 57, 0.15);
-  --shadow-primary-lg: 0 20px 40px -10px rgba(49, 112, 57, 0.2);
 
   /* ============================================
      TRANSITIONS - Smooth Interactions
