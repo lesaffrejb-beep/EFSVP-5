@@ -1,0 +1,120 @@
+/**
+ * ============================================
+ * TOKENS COMPATIBILITY LAYER
+ * Mapping ancien système → nouveau système AAA
+ * ============================================
+ *
+ * Ce fichier assure la transition progressive entre
+ * l'ancien système de couleurs hard-codées et le
+ * nouveau système AAA avec variables sémantiques.
+ */
+
+:root {
+  /* ============================================
+     MAPPING DES COULEURS PRINCIPALES
+     ============================================ */
+
+  /* Anciennes variables brand → Nouvelles variables sémantiques */
+  --color-terre-cuite: var(--color-dark-pastel-red-600); /* #B8441E → AAA red */
+  --color-encre-nuit: var(--color-neutral-900); /* #1A2332 → neutral dark */
+  --color-parchemin: var(--color-cosmic-latte-100); /* #F5E6D3 → warm light */
+  --color-ambre-forge: var(--color-maximum-yellow-400); /* #E8924F → warm yellow */
+  --color-charbon: var(--color-neutral-800); /* #2D2D2D → dark gray */
+
+  /* Ancien système de palettes → Nouveau système */
+  --color-primary-50: var(--color-dark-pastel-red-50);
+  --color-primary-100: var(--color-dark-pastel-red-100);
+  --color-primary-200: var(--color-dark-pastel-red-200);
+  --color-primary-300: var(--color-dark-pastel-red-300);
+  --color-primary-400: var(--color-dark-pastel-red-400);
+  --color-primary-500: var(--color-dark-pastel-red-500); /* #B95A40 → #CC4B24 */
+  --color-primary-600: var(--color-dark-pastel-red-600);
+  --color-primary-700: var(--color-dark-pastel-red-700);
+  --color-primary-800: var(--color-dark-pastel-red-800);
+  --color-primary-900: var(--color-dark-pastel-red-900);
+
+  /* Neutrals mapping (ancien → nouveau) */
+  --color-neutral-50: var(--color-neutral-50);
+  --color-neutral-100: var(--color-neutral-100);
+  --color-neutral-200: var(--color-neutral-200);
+  --color-neutral-300: var(--color-neutral-300);
+  --color-neutral-400: var(--color-neutral-400);
+  --color-neutral-500: var(--color-neutral-500);
+  --color-neutral-600: var(--color-neutral-600);
+  --color-neutral-700: var(--color-neutral-700);
+  --color-neutral-800: var(--color-neutral-800);
+  --color-neutral-900: var(--color-neutral-900);
+
+  /* ============================================
+     VARIABLES SÉMANTIQUES (Prioritaires)
+     ============================================ */
+
+  /* Backgrounds - Utilise les tokens AAA */
+  --bg-primary: var(--color-surface-primary);
+  --bg-secondary: var(--color-surface-secondary);
+  --bg-elevated: var(--color-surface-elevated);
+
+  /* Text - Utilise les tokens AAA */
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);
+  --text-inverse: var(--color-text-inverse);
+
+  /* Accents - Map vers les tokens AAA */
+  --accent-primary: var(--color-accent-primary);
+  --accent-secondary: var(--color-accent-secondary);
+  --accent-success: var(--color-accent-success);
+  --accent-warning: var(--color-accent-warning);
+  --accent-error: var(--color-accent-error);
+  --accent-info: var(--color-accent-info);
+
+  /* Borders - Utilise les tokens AAA */
+  --border-subtle: var(--color-border-subtle);
+  --border-regular: var(--color-border-regular);
+  --border-strong: var(--color-border-strong);
+
+  /* ============================================
+     COMPATIBILITÉ HERO & COMPOSANTS
+     ============================================ */
+
+  /* Hero spécifique */
+  --color-hero-bg: var(--color-cosmic-latte-100); /* Parchemin chaleureux */
+  --color-hero-text: var(--color-text-primary);
+  --color-hero-accent: var(--color-dark-pastel-red-600);
+
+  /* Success/Warning/Error (États) */
+  --color-success: var(--color-accent-success);
+  --color-success-light: var(--color-emerald-green-100);
+  --color-warning: var(--color-accent-warning);
+  --color-warning-light: var(--color-maximum-yellow-100);
+  --color-error: var(--color-accent-error);
+  --color-error-light: var(--color-dark-pastel-red-100);
+  --color-info: var(--color-accent-info);
+  --color-info-light: var(--color-papaya-whip-100);
+
+  /* ============================================
+     ANCIENNES VARIABLES INK (Navigation)
+     ============================================ */
+  --ink-50: var(--color-papaya-whip-50);
+  --ink-100: var(--color-papaya-whip-100);
+  --ink-200: var(--color-papaya-whip-200);
+  --ink-300: var(--color-papaya-whip-300);
+  --ink-400: var(--color-neutral-400);
+  --ink-500: var(--color-neutral-500);
+  --ink-600: var(--color-neutral-600);
+  --ink-700: var(--color-neutral-700);
+  --ink-800: var(--color-neutral-800);
+  --ink-900: var(--color-neutral-900);
+}
+
+/* ============================================
+   SUPPORT THÈME SOMBRE (Optionnel)
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: var(--color-neutral-900);
+    --bg-secondary: var(--color-neutral-800);
+    --text-primary: var(--color-neutral-100);
+    --text-secondary: var(--color-neutral-300);
+  }
+}
