@@ -250,6 +250,7 @@
   --bg-portfolio: var(--bg-section);
   --bg-testimonials: var(--bg-section);
   --bg-offer-featured: var(--color-primary);
+}
   /* ============================================
      SPACING SCALE - Harmonious Rhythm
      ============================================ */
