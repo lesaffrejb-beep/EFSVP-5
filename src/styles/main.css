@@ -96,8 +96,6 @@
   --bg-hero: var(--bg-page);
   --bg-section-default: var(--bg-section);
   --bg-projects: var(--bg-card);
-  --bg-portfolio: var(--bg-section);
-  --bg-testimonials: var(--bg-section);
   --bg-offer-featured: var(--color-primary);
   --bg-white-pure: var(--bg-card);
   --bg-off-white: var(--bg-section);
@@ -126,16 +124,10 @@
   --accent-main: var(--color-primary);
 
   /* Section tokens */
-  --bg-section-alt: var(--bg-section);
-  --bg-section-elevated: var(--bg-card);
-  --bg-section: var(--bg-section);
-  --bg-section-soft: var(--bg-section);
   --bg-section-strong: var(--bg-card);
   --bg-section-impact: var(--bg-section-soft);
   --bg-section-a2mo: var(--color-neutral-800);
   --section-text-on-dark: var(--text-on-dark);
-  --bg-card: var(--bg-card);
-  --bg-card-elevated: var(--bg-card-elevated);
   --bg-contact-gradient: linear-gradient(to bottom, var(--bg-page) 0%, var(--color-neutral-800) 100%);
 
   /* Surfaces & filters */
@@ -217,16 +209,12 @@
   --shadow-card: 0 10px 30px -5px rgba(49, 112, 57, 0.12);
   --shadow-soft: 0 8px 24px rgba(49, 112, 57, 0.12);
   --shadow-floating: 0 20px 45px -10px rgba(26, 26, 26, 0.18);
-  --surface-card: var(--bg-section);
-  --surface-elevated: var(--bg-card);
   --card-subtle: color-mix(in srgb, var(--bg-section) 92%, var(--bg-card) 8%);
   --section-bg-default: var(--bg-section);
   --section-bg-soft: var(--bg-page);
   --section-bg-strong: var(--bg-card);
   --section-bg-impact: var(--section-bg-soft);
   --section-bg-a2mo: var(--color-encre-nuit);
-  --section-text-on-dark: var(--text-on-dark);
-
   /* Hero tokens */
   --hero-bg: var(--bg-page);
   --hero-signature-color: var(--color-encre-nuit);
@@ -246,11 +234,8 @@
   --nav-progress-gradient: linear-gradient(90deg, #CC4B24, #F1BE49);
 
   /* Offer & process */
-  --bg-offer-featured: var(--color-primary);
   --bg-portfolio: var(--bg-section);
   --bg-testimonials: var(--bg-section);
-  --bg-offer-featured: var(--color-primary);
-}
   /* ============================================
      SPACING SCALE - Harmonious Rhythm
      ============================================ */
@@ -288,41 +273,6 @@
   --radius-2xl: 2rem;     /* 32px */
   --radius-full: 9999px;
 
-  /* Buttons - dedicated tokens */
-  --btn-radius-sm: 0.25rem;  /* 4px */
-  --btn-radius-md: 0.5rem;   /* 8px */
-  --btn-radius-lg: 0.75rem;  /* 12px */
-  --btn-padding-sm: var(--space-3) var(--space-4);
-  --btn-padding-md: var(--space-4) var(--space-6);
-  --btn-padding-lg: var(--space-5) var(--space-8);
-  --btn-primary-bg: var(--color-accent);
-  --btn-primary-bg-hover: var(--color-accent-hover);
-  --btn-primary-bg-active: var(--color-accent-strong);
-  --btn-primary-gradient: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
-  --btn-primary-gradient-hover: linear-gradient(135deg, var(--color-accent-hover) 0%, var(--color-accent) 100%);
-  --btn-primary-shadow: 0 12px 28px -8px rgba(204, 75, 36, 0.35);
-  --btn-primary-shadow-hover: var(--shadow-strong);
-  --btn-secondary-border: var(--color-primary);
-  --btn-secondary-text: var(--color-primary);
-  --btn-secondary-bg-hover: rgba(49, 112, 57, 0.08);
-  --btn-ghost-hover: rgba(49, 112, 57, 0.08);
-  /* Hero CTA - Dark Pastel Red */
-  --btn-hero-cta-bg: var(--btn-primary-gradient);
-  --btn-hero-cta-bg-hover: var(--btn-primary-gradient-hover);
-  --btn-hero-cta-text: var(--text-on-accent);
-  --btn-hero-cta-border: color-mix(in srgb, var(--color-accent-hover) 55%, rgba(255, 255, 235, 0.18));
-  --btn-hero-cta-halo: color-mix(in srgb, var(--color-highlight-soft) 50%, transparent);
-  --btn-hero-cta-shadow:
-    0 16px 40px -14px rgba(204, 75, 36, 0.6),
-    0 0 0 2px rgba(204, 75, 36, 0.25);
-  --btn-hero-cta-shadow-hover:
-    0 22px 52px -12px rgba(204, 75, 36, 0.75),
-    0 0 0 3px rgba(204, 75, 36, 0.35);
-  --offer-featured-border: var(--color-primary);
-  --project-tag-bg: color-mix(in srgb, rgba(49, 112, 57, 0.06) 60%, var(--bg-card) 40%);
-  --project-tag-border: color-mix(in srgb, rgba(49, 112, 57, 0.2) 55%, transparent);
-  --project-tag-text: color-mix(in srgb, var(--text-primary) 65%, var(--color-primary-700) 35%);
-  --project-tag-gap: var(--space-2);
   --header-height: var(--space-20);
 
   /* ============================================
@@ -1481,7 +1431,7 @@ button,
 }
 
 /* ============================================
-   HERO 2 – IMMERSIVE EXPERIENCE
+   HERO 2 - IMMERSIVE EXPERIENCE
    ============================================ */
 
 .hero-immersive {
