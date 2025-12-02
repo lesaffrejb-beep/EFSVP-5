@@ -346,7 +346,7 @@
   min-width: 48px;
 
   /* Style - Hero CTA with gradient Dark Pastel Red */
-  background: var(--btn-primary-gradient, linear-gradient(135deg, #CC4B24 0%, #e65a33 100%));
+  background: var(--btn-primary-gradient, linear-gradient(135deg, #CC4B24 0%, var(--color-accent-hover) 100%));
   color: var(--text-inverse, #FFFFFF);
   font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
   font-size: 1.0625rem;
@@ -414,7 +414,7 @@
 .hero__cta:hover,
 .hero__cta.btn:hover {
   transform: translateY(-2px);
-  background: var(--btn-primary-gradient-hover, linear-gradient(135deg, #b3421f 0%, #CC4B24 100%));
+  background: var(--btn-primary-gradient-hover, linear-gradient(135deg, var(--color-accent-hover) 0%, #CC4B24 100%));
   box-shadow: var(--btn-primary-shadow-hover, 0 18px 40px -8px rgba(204, 75, 36, 0.5)) !important;
   filter: brightness(1.03);
   /* ✅ Transition ONLY for hover state (not for entry animation) */

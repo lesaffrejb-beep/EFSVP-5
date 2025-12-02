@@ -99,14 +99,14 @@
 .nav__link {
   font-size: var(--text-base);
   font-weight: var(--font-medium);
-  color: color-mix(in srgb, #ffffff 88%, var(--ink-surface) 12%);
+  color: rgba(255, 251, 235, 0.82);
   text-decoration: none;
   padding: var(--space-2) 0;
   transition: color var(--transition-base), transform var(--transition-fast);
 }
 
 .nav__link:hover {
-  color: #CC4B24; /* Dark Pastel Red - Liens navigation hover */
+  color: var(--color-highlight);
   transform: translateY(-1px);
 }
 
@@ -389,7 +389,7 @@
     align-items: center;
     font-size: 1.125rem;
     text-decoration: none;
-    color: #f9fafb;
+    color: rgba(255, 251, 235, 0.9);
     transition:
       color 180ms ease-out,
       transform 180ms ease-out;
@@ -417,12 +417,12 @@
 
   .nav__links--mobile .nav__link:focus-visible,
   .nav__menu-close:focus-visible {
-    outline: 2px solid #CC4B24; /* Dark Pastel Red */
+    outline: 2px solid var(--color-accent);
     outline-offset: 3px;
   }
 
   .nav__link--active {
-    color: #CC4B24; /* Dark Pastel Red */
+    color: var(--color-accent);
   }
 
   .nav__link--active::after {

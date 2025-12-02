@@ -20,221 +20,222 @@
      COLORS SYSTEM - Fresh & Natural
      ============================================ */
 
-  /* Primary: Emerald Green (Natural, Fresh, Trust) */
-  --color-primary-50: #f0f7f1;
-  --color-primary-100: #d9eedc;
-  --color-primary-200: #b3ddb9;
-  --color-primary-300: #8dcc96;
-  --color-primary-400: #4f9a5a;
-  --color-primary-500: #317039; /* Base - Emerald Green */
-  --color-primary-600: #2a6031;
-  --color-primary-700: #235029;
-  --color-primary-800: #1c4021;
-  --color-primary-900: #153019;
-
-  /* Neutral: Soft Black (Depth, Elegance, Readability) */
-  --color-neutral-50: #FFFBEB;   /* Cosmic Latte */
-  --color-neutral-100: #FFF1D4;  /* Papaya Whip */
-  --color-neutral-200: #FBEDD9;  /* Antique White */
-  --color-neutral-300: #e8dcc8;
-  --color-neutral-400: #8a8a8a;
-  --color-neutral-500: #5A5A5A;  /* Texte secondaire */
-  --color-neutral-600: #3a3a3a;
-  --color-neutral-700: #2a2a2a;
-  --color-neutral-800: #1A1A1A;  /* Texte principal */
-  --color-neutral-900: #0d0d0d;
+  /* Brand core */
+  --color-primary: #317039;                /* Emerald Green */
+  --color-primary-50: #E0F0E1;             /* Light Emerald wash */
+  --color-primary-100: #D4E7D6;
+  --color-primary-200: #B7D2BA;
+  --color-primary-300: #93B899;
+  --color-primary-400: #629C6A;
+  --color-primary-500: var(--color-primary);
+  --color-primary-600: #2A6031;
+  --color-primary-700: #25502A;
+  --color-primary-800: #1F4123;
+  --color-primary-900: #1A321C;
 
   /* Accent scale - Dark Pastel Red for CTAs */
-  --ink-50: #fef5f2;
-  --ink-100: #fde8e3;
-  --ink-200: #fbd0c6;
-  --ink-300: #f7aa99;
-  --ink-400: #e67a5f;
-  --ink-500: #CC4B24; /* Base - Dark Pastel Red */
-  --ink-600: #b3421f;
-  --ink-700: #99381a;
-  --ink-800: #802e16;
-  --ink-900: #662511;
-  --ink-deep: #4d1c0d;
-  --ink-on-paper: #1A1A1A;
-  --ink-surface: var(--color-hero-bg);
-  --ink-surface-strong: color-mix(in srgb, var(--color-hero-bg) 88%, var(--bg-primary) 12%);
-  --ink-border: color-mix(in srgb, var(--color-neutral-700) 12%, transparent);
+  --color-accent: #CC4B24;
+  --color-accent-hover: #B54120;
+  --color-accent-strong: #99381A;
+  --color-accent-soft: rgba(204, 75, 36, 0.16);
 
-  /* Semantic Colors */
-  --color-success: #317039;      /* Emerald Green */
-  --color-success-light: #d9eedc;
-  --color-warning: #F1BE49;      /* Maximum Yellow */
-  --color-warning-light: #FFF1D4;
-  --color-error: #CC4B24;        /* Dark Pastel Red */
-  --color-error-light: #fde8e3;
-  --color-info: #317039;
-  --color-info-light: #d9eedc;
+  /* Highlight details */
+  --color-highlight: #F1BE49;
+  --color-highlight-soft: #F7D889;
+  --color-highlight-fade: rgba(241, 190, 73, 0.16);
 
-  /* Backgrounds */
-  --bg-primary: #FFFBEB;         /* Cosmic Latte */
-  --bg-secondary: #FFF1D4;       /* Papaya Whip */
-  --bg-tertiary: #FBEDD9;        /* Antique White */
+  /* Neutral & backgrounds */
+  --bg-page: #FBEDD9;                      /* Fond global */
+  --bg-section: #FFF1D4;                   /* Sections alternées */
+  --bg-section-alt: #FFF1D4;
+  --bg-section-contrast: #FBEDD9;
+  --bg-card: #FFFBEB;                      /* Cartes / surfaces */
+  --bg-card-elevated: #FFFBEB;
+  --bg-elevated: #FFFBEB;
   --bg-dark: #1A1A1A;
-  --bg-accent: #f0f7f1;
-  --color-hero-bg: #FBEDD9;      /* Antique White - Fond parchemin */
-  --bg-page: #FBEDD9;            /* Antique White - Fond général */
+
+  --color-neutral-50: var(--bg-card);
+  --color-neutral-100: var(--bg-section);
+  --color-neutral-200: var(--bg-page);
+  --color-neutral-300: #E8DEC7;
+  --color-neutral-400: #6B6B6B;
+  --color-neutral-500: #5A5A5A;            /* Texte secondaire */
+  --color-neutral-600: #3A3A3A;
+  --color-neutral-700: #2A2A2A;
+  --color-neutral-800: #1A1A1A;            /* Texte principal */
+  --color-neutral-900: #1A1A1A;
+
+  /* Text */
+  --text-primary: #1A1A1A;
+  --text-secondary: #5A5A5A;
+  --text-tertiary: #6B6B6B;
+  --text-inverse: #FFFBEB;
+  --text-accent: var(--color-primary);
+  --text-on-accent: #FFFBEB;
+  --text-on-dark: #FFFBEB;
+  --text-muted: var(--color-neutral-500);
+
+  /* Background aliases */
+  --bg-primary: var(--bg-card);
+  --bg-secondary: var(--bg-section);
+  --bg-tertiary: var(--bg-page);
+  --color-hero-bg: var(--bg-page);
+  --bg-page-parchment: var(--bg-page);
+  --bg-section-soft: var(--bg-section);
+  --bg-section-alt-warm: color-mix(in srgb, var(--bg-section) 82%, var(--color-highlight) 18%);
+  --bg-section-alt-cool: color-mix(in srgb, var(--bg-card) 90%, rgba(49, 112, 57, 0.1) 10%);
+  --bg-section-elevated: var(--bg-card);
+  --bg-section-dark: var(--color-neutral-800);
+  --bg-section-gradient: linear-gradient(180deg, var(--color-neutral-800) 0%, var(--color-neutral-900) 100%);
+  --bg-surface: var(--bg-page);
+  --bg-footer: var(--color-neutral-800);
+  --bg-contact: var(--color-neutral-800);
+  --bg-contact-card: var(--color-neutral-800);
+  --bg-header: var(--color-neutral-800);
+  --bg-body: var(--bg-page);
+  --bg-hero: var(--bg-page);
+  --bg-section-default: var(--bg-section);
+  --bg-projects: var(--bg-card);
+  --bg-offer-featured: var(--color-primary);
+  --bg-white-pure: var(--bg-card);
+  --bg-off-white: var(--bg-section);
+  --bg-dark-deep: var(--color-neutral-900);
+
+  /* Filters */
+  --filter-bg: var(--bg-card);
+  --filter-border: var(--border-subtle);
+  --filter-border-hover: var(--border-color);
+  --filter-bg-active: var(--color-primary);
+  --filter-text-default: var(--text-primary);
+  --filter-text-active: var(--text-on-accent);
 
   /* Hero gradient backgrounds */
-  --hero-gradient: linear-gradient(180deg, #FBEDD9 0%, #FFF1D4 100%);
-  --hero-gradient-soft: linear-gradient(135deg, #FBEDD9 0%, #FFF1D4 50%, #FFFBEB 100%);
+  --hero-gradient: linear-gradient(180deg, var(--bg-page) 0%, var(--bg-section) 100%);
+  --hero-gradient-soft: radial-gradient(circle at 20% 30%, rgba(49, 112, 57, 0.35) 0%, rgba(49, 112, 57, 0) 45%),
+    radial-gradient(circle at 80% 20%, rgba(204, 75, 36, 0.28) 0%, rgba(204, 75, 36, 0) 42%),
+    linear-gradient(135deg, var(--bg-page) 0%, var(--bg-section) 55%, var(--bg-card) 100%);
 
-  /* === PALETTE OFFICIELLE === */
-  --color-terre-cuite: #CC4B24;  /* Dark Pastel Red - CTA */
-  --color-encre-nuit: #1A1A1A;   /* Noir adouci */
-  --color-parchemin: #FBEDD9;    /* Antique White */
-  --color-ambre-forge: #F1BE49;  /* Maximum Yellow */
-  --color-charbon: #1A1A1A;
+  /* Palette aliases */
+  --color-terre-cuite: var(--color-accent);
+  --color-encre-nuit: var(--text-primary);
+  --color-parchemin: var(--bg-page);
+  --color-ambre-forge: var(--color-highlight);
+  --color-charbon: var(--text-primary);
+  --accent-main: var(--color-primary);
 
-  /* === ACCENT PRINCIPAL (Emerald Green pour éléments principaux) === */
-  --accent-main: var(--color-primary-500); /* #317039 - Emerald Green */
+  /* Section tokens */
+  --bg-section-strong: var(--bg-card);
+  --bg-section-impact: var(--bg-section-soft);
+  --bg-section-a2mo: var(--color-neutral-800);
+  --section-text-on-dark: var(--text-on-dark);
+  --bg-contact-gradient: linear-gradient(to bottom, var(--bg-page) 0%, var(--color-neutral-800) 100%);
 
-  /* === SURFACES PRINCIPALES === */
-  --bg-hero: var(--color-parchemin);  /* Antique White */
-  --bg-section: #FFF1D4;              /* Papaya Whip */
-  --bg-projects: #FFFBEB;             /* Cosmic Latte */
-  --bg-body: #FBEDD9;                 /* Antique White */
-
-  /* === FILTRES === */
-  --filter-bg: #FFFBEB;               /* Cosmic Latte */
-  --filter-border: rgba(26, 26, 26, 0.08);
-  --filter-border-hover: rgba(26, 26, 26, 0.18);
-  --filter-bg-active: var(--color-primary-500);
-  --filter-text-default: var(--color-encre-nuit);
-  --filter-text-active: #FFFFFF;
-  --bg-page-parchment: #FBEDD9;       /* Antique White */
-  --bg-section-soft: #FFF1D4;         /* Papaya Whip */
-  --bg-section-alt: #FFFBEB;          /* Cosmic Latte */
-  --bg-section-alt-warm: color-mix(in srgb, #FFF1D4 85%, #F1BE49 15%); /* Variation jaune chaud */
-  --bg-section-alt-cool: color-mix(in srgb, #FFFBEB 90%, #d9eedc 10%); /* Variation verte fraîche */
-  --bg-section-elevated: #FFFBEB;     /* Cosmic Latte - Fond légèrement relevé */
-  --bg-section-dark: var(--color-neutral-800); /* Fond sombre */
-  --bg-section-gradient: linear-gradient(180deg, var(--color-neutral-800) 0%, var(--color-neutral-900) 100%);
-  --bg-surface: #FBEDD9;              /* Antique White */
-  --bg-card: #FFFBEB;                 /* Cosmic Latte - Cartes */
-  --bg-card-elevated: #FFFBEB;        /* Cosmic Latte */
-  --bg-footer: #0d0d0d;               /* Footer profond */
-  --bg-contact: var(--color-neutral-900);
-  --bg-contact-card: #1A1A1A;
-  --bg-header: #1A1A1A;               /* Header sombre */
-  --bg-offer-featured: var(--color-primary-500); /* Emerald Green pour offre premium */
-
-  /* TOKENS PREMIUM 2026 - Hiérarchie des fonds */
-  --bg-white-pure: #FFFBEB;      /* Cosmic Latte */
-  --bg-off-white: #FFF1D4;       /* Papaya Whip */
-  --bg-dark-deep: #0d0d0d;       /* Contact / Footer sombre profond */
-
-  /* Surfaces & sections */
-  --neutral-charcoal: #1A1A1A;
-
-  /* Surfaces élevées */
-  --surface-elevated: #FFFBEB;   /* Cosmic Latte */
+  /* Surfaces & filters */
+  --surface-elevated: var(--bg-card);
   --surface-elevated-subtle: rgba(255, 251, 235, 0.92);
-
-  /* Sections de page */
-  --bg-portfolio: #FFF1D4;       /* Papaya Whip */
-  --bg-testimonials: #FFF1D4;
-
-  /* Section contact – dégradé CLAIR → FONCÉ */
-  --bg-contact-gradient: linear-gradient(
-    to bottom,
-    var(--color-hero-bg) 0%,
-    var(--neutral-charcoal) 100%
-  );
-
-  /* Hero tokens */
-  --hero-bg: var(--color-parchemin); /* Antique White */
-  --hero-signature-color: var(--color-encre-nuit); /* Noir adouci */
-  --hero-script-color: #FFFFFF;
-  --hero-baseline-color: var(--color-ambre-forge); /* Maximum Yellow */
-  --hero-baseline-accent: #F1BE49;
-  --hero-cta-bg: linear-gradient(135deg, #CC4B24 0%, #e65a33 100%); /* Dégradé rouge */
-  --hero-cta-bg-hover: linear-gradient(135deg, #b3421f 0%, #CC4B24 100%);
-  --hero-cta-text-color: #FFFFFF;
-  --hero-cta-shadow: 0 18px 45px rgba(204, 75, 36, 0.42);
-
-  /* Surfaces UI */
+  --surface-card: var(--bg-section);
+  --surface-floating: var(--bg-card);
   --surface-filter: rgba(49, 112, 57, 0.04);
   --surface-filter-active: rgba(49, 112, 57, 0.14);
 
-  /* ============================================
-     PROJECTS FILTERS - Shell & Pills premium
-     ============================================ */
-
-  /* Shell des filtres */
-  --projects-filters-shell-bg: linear-gradient(
-    135deg,
-    rgba(49, 112, 57, 0.04) 0%,   /* Emerald Green très léger */
-    rgba(255, 241, 212, 0.9) 40%,
-    #FFFBEB 100%
-  );
+  /* Projects filter shell */
+  --projects-filters-shell-bg: linear-gradient(135deg, rgba(49, 112, 57, 0.04) 0%, rgba(255, 241, 212, 0.9) 40%, var(--bg-card) 100%);
   --projects-filters-shell-border: rgba(49, 112, 57, 0.08);
-
-  /* Pills */
-  --projects-filter-pill-bg: #FFFBEB;
+  --projects-filter-pill-bg: var(--bg-card);
   --projects-filter-pill-border: rgba(26, 26, 26, 0.08);
   --projects-filter-pill-border-hover: rgba(26, 26, 26, 0.18);
   --projects-filter-pill-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  --projects-filter-pill-active-gradient: var(--btn-primary-gradient);
+  --projects-filter-pill-active-text: var(--text-on-accent);
 
-  /* Active pill - gradient rouge CTA */
-  --projects-filter-pill-active-gradient: var(--hero-cta-bg);
-  --projects-filter-pill-active-text: #ffffff;
-
-  /* Ombres soft */
-  --shadow-soft-md: 0 14px 30px rgba(0, 0, 0, 0.14);
-  --shadow-soft-lg: 0 26px 60px rgba(0, 0, 0, 0.20);
-
-  /* OMBRE CARTES PREMIUM */
-  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.06);
-  --shadow-soft: 0 8px 24px rgba(26, 26, 26, 0.08);
-  --shadow-floating: 0 20px 45px -10px rgba(26, 26, 26, 0.18);
-  --surface-card: #FFF1D4;
-  --surface-elevated: #FFFBEB;
-  --card-surface: var(--bg-white-pure);
-  --card-subtle: color-mix(in srgb, #FFF1D4 92%, #FFFBEB 8%);
-  --section-bg-default: #FFF1D4;
-  --section-bg-soft: #FBEDD9;
-  --section-bg-strong: #FFFBEB;
-  --section-bg-impact: var(--section-bg-soft);
-  --section-bg-a2mo: var(--color-encre-nuit);
-  --section-text-on-dark: #FFFBEB;
-
-  /* Text Colors */
-  --text-primary: #1A1A1A;       /* Noir adouci */
-  --text-secondary: #5A5A5A;     /* Gris foncé */
-  --text-tertiary: #7a7a7a;
-  --text-inverse: #ffffff;
-  --text-accent: #317039;        /* Emerald Green */
-  --focus-color: #F1BE49;        /* Maximum Yellow - Focus states */
-  --link-hover-underline: #F1BE49; /* Maximum Yellow - Link hover underline */
+  /* Text colors & focus */
+  --focus-color: var(--color-highlight);
+  --link-hover-underline: var(--color-highlight);
 
   /* Borders */
-  --border-color: rgba(26, 26, 26, 0.08);
-  --border-color-strong: rgba(26, 26, 26, 0.12);
-  --border-color-inverse: rgba(255, 255, 255, 0.12);
-  --border-soft: rgba(26, 26, 26, 0.10);
-  --border-subtle: rgba(26, 26, 26, 0.06);
-  --border-input: rgba(26, 26, 26, 0.25);
+  --border-color: rgba(49, 112, 57, 0.2);
+  --border-color-strong: rgba(49, 112, 57, 0.28);
+  --border-color-inverse: rgba(255, 251, 235, 0.32);
+  --border-soft: rgba(49, 112, 57, 0.12);
+  --border-subtle: rgba(49, 112, 57, 0.14);
+  --border-input: rgba(49, 112, 57, 0.35);
 
-  /* Text on colored backgrounds */
-  --text-on-accent: #ffffff;
-  --text-on-dark: #ffffff;
-  --text-muted: var(--color-neutral-500);
-
-  /* Accent Colors */
-  --accent-primary: var(--color-primary-500); /* Emerald Green */
-  --accent-amber: #F1BE49;       /* Maximum Yellow */
-  --accent-primary-soft: color-mix(in srgb, var(--color-primary-500) 15%, transparent);
+  /* Accent tokens */
+  --accent-primary: var(--color-primary);
+  --accent-amber: var(--color-highlight);
+  --accent-primary-soft: rgba(49, 112, 57, 0.15);
 
   /* Slider tokens */
   --slider-track: var(--color-neutral-700);
-  --slider-thumb: var(--color-primary-500);
+  --slider-thumb: var(--color-primary);
 
+  /* Buttons - dedicated tokens */
+  --btn-radius-sm: 0.25rem;
+  --btn-radius-md: 0.5rem;
+  --btn-radius-lg: 0.75rem;
+  --btn-padding-sm: var(--space-3) var(--space-4);
+  --btn-padding-md: var(--space-4) var(--space-6);
+  --btn-padding-lg: var(--space-5) var(--space-8);
+  --btn-primary-bg: var(--color-accent);
+  --btn-primary-bg-hover: var(--color-accent-hover);
+  --btn-primary-bg-active: var(--color-accent-strong);
+  --btn-primary-gradient: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+  --btn-primary-gradient-hover: linear-gradient(135deg, var(--color-accent-hover) 0%, var(--color-accent) 100%);
+  --btn-primary-shadow: 0 12px 28px -8px rgba(204, 75, 36, 0.35);
+  --btn-primary-shadow-hover: var(--shadow-strong);
+  --btn-secondary-border: var(--color-primary);
+  --btn-secondary-text: var(--color-primary);
+  --btn-secondary-bg-hover: rgba(49, 112, 57, 0.08);
+  --btn-ghost-hover: rgba(49, 112, 57, 0.08);
+  --btn-hero-cta-bg: var(--btn-primary-gradient);
+  --btn-hero-cta-bg-hover: var(--btn-primary-gradient-hover);
+  --btn-hero-cta-text: var(--text-on-accent);
+  --btn-hero-cta-border: color-mix(in srgb, var(--color-accent-hover) 55%, rgba(255, 251, 235, 0.18));
+  --btn-hero-cta-halo: color-mix(in srgb, var(--color-highlight) 32%, transparent);
+  --btn-hero-cta-shadow: 0 16px 40px -14px rgba(204, 75, 36, 0.6), 0 0 0 2px rgba(204, 75, 36, 0.25);
+  --btn-hero-cta-shadow-hover: 0 22px 52px -12px rgba(204, 75, 36, 0.75), 0 0 0 3px rgba(204, 75, 36, 0.35);
+  --offer-featured-border: var(--color-primary);
+
+  /* Badges & tags */
+  --badge-bg: var(--color-highlight-fade);
+  --project-tag-bg: color-mix(in srgb, rgba(49, 112, 57, 0.06) 60%, var(--bg-card) 40%);
+  --project-tag-border: color-mix(in srgb, rgba(49, 112, 57, 0.2) 55%, transparent);
+  --project-tag-text: color-mix(in srgb, var(--text-primary) 65%, var(--color-primary-700) 35%);
+  --project-tag-gap: var(--space-2);
+
+  /* Shadows */
+  --shadow-soft-md: 0 14px 30px rgba(0, 0, 0, 0.08);
+  --shadow-soft-lg: 0 26px 60px rgba(0, 0, 0, 0.14);
+  --shadow-card: 0 10px 30px -5px rgba(49, 112, 57, 0.12);
+  --shadow-soft: 0 8px 24px rgba(49, 112, 57, 0.12);
+  --shadow-floating: 0 20px 45px -10px rgba(26, 26, 26, 0.18);
+  --card-subtle: color-mix(in srgb, var(--bg-section) 92%, var(--bg-card) 8%);
+  --section-bg-default: var(--bg-section);
+  --section-bg-soft: var(--bg-page);
+  --section-bg-strong: var(--bg-card);
+  --section-bg-impact: var(--section-bg-soft);
+  --section-bg-a2mo: var(--color-encre-nuit);
+  /* Hero tokens */
+  --hero-bg: var(--bg-page);
+  --hero-signature-color: var(--color-encre-nuit);
+  --hero-script-color: var(--text-on-accent);
+  --hero-baseline-color: var(--color-ambre-forge);
+  --hero-baseline-accent: var(--color-highlight);
+  --hero-cta-bg: var(--btn-primary-gradient);
+  --hero-cta-bg-hover: var(--btn-primary-gradient-hover);
+  --hero-cta-text-color: var(--text-on-accent);
+  --hero-cta-shadow: 0 18px 45px rgba(204, 75, 36, 0.42);
+
+  /* Colored Shadows */
+  --shadow-primary: 0 10px 25px -5px rgba(49, 112, 57, 0.15);
+  --shadow-primary-lg: 0 20px 40px -10px rgba(49, 112, 57, 0.2);
+
+  /* Slider backgrounds & progress */
+  --nav-progress-gradient: linear-gradient(90deg, #CC4B24, #F1BE49);
+
+  /* Offer & process */
+  --bg-portfolio: var(--bg-section);
+  --bg-testimonials: var(--bg-section);
   /* ============================================
      SPACING SCALE - Harmonious Rhythm
      ============================================ */
@@ -272,43 +273,6 @@
   --radius-2xl: 2rem;     /* 32px */
   --radius-full: 9999px;
 
-  /* Buttons - dedicated tokens */
-  --btn-radius-sm: 0.25rem;  /* 4px */
-  --btn-radius-md: 0.5rem;   /* 8px */
-  --btn-radius-lg: 0.75rem;  /* 12px */
-  --btn-padding-sm: var(--space-3) var(--space-4);
-  --btn-padding-md: var(--space-4) var(--space-6);
-  --btn-padding-lg: var(--space-5) var(--space-8);
-  /* Boutons primaires : fond #CC4B24 (Dark Pastel Red), texte blanc */
-  --btn-primary-bg: #CC4B24;
-  --btn-primary-bg-hover: #b3421f;
-  --btn-primary-bg-active: #99381a;
-  --btn-primary-gradient: linear-gradient(135deg, #CC4B24 0%, #e65a33 100%);
-  --btn-primary-gradient-hover: linear-gradient(135deg, #b3421f 0%, #CC4B24 100%);
-  --btn-primary-shadow: 0 12px 28px -8px rgba(204, 75, 36, 0.35);
-  --btn-primary-shadow-hover: 0 18px 40px -8px rgba(204, 75, 36, 0.5);
-  /* Boutons secondaires : fond transparent, bordure #317039, texte #317039 */
-  --btn-secondary-border: #317039;
-  --btn-secondary-text: #317039;
-  --btn-secondary-bg-hover: rgba(49, 112, 57, 0.08);
-  --btn-ghost-hover: rgba(49, 112, 57, 0.08);
-  /* Hero CTA - Dark Pastel Red */
-  --btn-hero-cta-bg: linear-gradient(135deg, #CC4B24 0%, #e65a33 100%);
-  --btn-hero-cta-bg-hover: linear-gradient(135deg, #b3421f 0%, #CC4B24 100%);
-  --btn-hero-cta-text: #FFFFFF;
-  --btn-hero-cta-border: color-mix(in srgb, #b3421f 55%, rgba(255, 255, 255, 0.18));
-  --btn-hero-cta-halo: color-mix(in srgb, #f7aa99 50%, transparent);
-  --btn-hero-cta-shadow:
-    0 16px 40px -14px rgba(204, 75, 36, 0.6),
-    0 0 0 2px rgba(204, 75, 36, 0.25);
-  --btn-hero-cta-shadow-hover:
-    0 22px 52px -12px rgba(204, 75, 36, 0.75),
-    0 0 0 3px rgba(204, 75, 36, 0.35);
-  --offer-featured-border: #317039;
-  --project-tag-bg: color-mix(in srgb, #f0f7f1 65%, #FFFBEB 35%);
-  --project-tag-border: color-mix(in srgb, #b3ddb9 55%, transparent);
-  --project-tag-text: color-mix(in srgb, #1A1A1A 65%, #235029 35%);
-  --project-tag-gap: var(--space-2);
   --header-height: var(--space-20);
 
   /* ============================================
@@ -369,13 +333,10 @@
   --shadow-xl: 0 20px 25px -5px rgba(26, 26, 26, 0.1), 0 8px 10px -6px rgba(26, 26, 26, 0.1);
   --shadow-2xl: 0 25px 50px -12px rgba(26, 26, 26, 0.25);
   --shadow-inner: inset 0 2px 4px 0 rgba(26, 26, 26, 0.05);
-  --shadow-soft: 0 8px 24px rgba(26, 26, 26, 0.12); /* Cards projets */
   --shadow-header-soft: 0 1px 0 rgba(26, 26, 26, 0.12); /* Header flottant */
   --shadow-elevated: 0 18px 45px rgba(26, 26, 26, 0.28); /* Making-of card */
 
   /* Colored Shadows - Emerald Green based */
-  --shadow-primary: 0 10px 25px -5px rgba(49, 112, 57, 0.15);
-  --shadow-primary-lg: 0 20px 40px -10px rgba(49, 112, 57, 0.2);
 
   /* ============================================
      TRANSITIONS - Smooth Interactions
@@ -1313,7 +1274,7 @@ button,
 
 /* BookHero 3D */
 .book-hero {
-  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+  background: linear-gradient(180deg, var(--color-neutral-800) 0%, var(--color-neutral-900) 100%);
   overflow: hidden;
 }
 
@@ -1470,7 +1431,7 @@ button,
 }
 
 /* ============================================
-   HERO 2 – IMMERSIVE EXPERIENCE
+   HERO 2 - IMMERSIVE EXPERIENCE
    ============================================ */
 
 .hero-immersive {
@@ -2091,7 +2052,7 @@ button,
   height: 58px;
   min-width: 58px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #CC4B24 0%, #e65a33 100%); /* Dark Pastel Red gradient */
+  background: linear-gradient(135deg, #CC4B24 0%, var(--color-accent-hover) 100%); /* Dark Pastel Red gradient */
   color: #FFFFFF;
   font-family: var(--font-display);
   font-size: 1.5rem; /* Agrandi de 1.25rem à 1.5rem */
@@ -2486,8 +2447,8 @@ button,
   position: relative;
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  background: linear-gradient(145deg, #111827, #020617);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(145deg, rgba(37, 80, 42, 0.9), rgba(26, 26, 26, 0.95));
+  border: 1px solid rgba(255, 251, 235, 0.12);
   box-shadow: 0 26px 52px rgba(0, 0, 0, 0.55);
 }
 
@@ -2517,7 +2478,7 @@ button,
 }
 
 .creation-highlight__screen-placeholder {
-  background: linear-gradient(145deg, #0f172a, #0a0f1a);
+  background: linear-gradient(145deg, rgba(37, 80, 42, 0.85), rgba(26, 26, 26, 0.92));
   border-radius: var(--radius-xl);
   padding: var(--space-8) var(--space-6);
   display: grid;
@@ -3081,17 +3042,17 @@ button,
 }
 
 .copy-email__success {
-  color: #d4f4dd;
+  color: var(--color-primary-100);
 }
 
 .copy-email__error {
-  color: #ffd6d1;
+  color: color-mix(in srgb, var(--color-accent) 70%, var(--bg-card) 30%);
 }
 
 /* Contact form card - Style v3 avec fond légèrement plus clair */
 .contact__card,
 .contact-form-card {
-  --contact-card-bg: #232B3A; /* Fond légèrement plus clair que encre nuit */
+  --contact-card-bg: color-mix(in srgb, var(--color-primary-700) 55%, var(--color-neutral-800) 45%);
   background-color: var(--contact-card-bg);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-xl);
@@ -3118,7 +3079,7 @@ button,
   border-radius: var(--radius-xl);
   background: rgba(45, 110, 79, 0.22);
   border: 1px solid rgba(212, 237, 218, 0.45);
-  color: #d4f4dd;
+  color: var(--color-primary-100);
   margin-bottom: 0;
   opacity: 0;
   transform: translateY(-12px);
@@ -3149,7 +3110,7 @@ button,
 .contact__feedback-icon svg {
   width: 28px;
   height: 28px;
-  color: #d4f4dd;
+  color: var(--color-primary-100);
 }
 
 .contact__feedback-title {
@@ -3160,7 +3121,7 @@ button,
 
 .contact__feedback-name {
   font-weight: var(--font-semibold);
-  color: #f7c7a3;
+  color: var(--color-highlight-soft);
 }
 
 .contact__feedback-text {
@@ -3880,7 +3841,7 @@ button,
   gap: var(--space-2);
   padding: var(--space-5) var(--space-6);
   border-radius: var(--radius-xl);
-  background-color: var(--card-subtle, #F5F5F7);
+  background-color: var(--card-subtle, var(--bg-section));
   box-shadow: var(--shadow-soft);
   border: 1px solid var(--border-subtle);
   overflow: hidden;
@@ -4087,7 +4048,7 @@ button,
 
 /* Hover - changement subtil de fond */
 .projects-filter-button:hover {
-  background: var(--bg-secondary, #f8f9fa);
+  background: var(--bg-secondary, var(--bg-section));
   border-color: var(--border-color-strong);
   color: var(--text-primary);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
