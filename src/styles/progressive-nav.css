@@ -106,7 +106,7 @@
 }
 
 .nav__link:hover {
-  color: var(--terracotta-200, var(--color-primary-300));
+  color: #CC4B24; /* Dark Pastel Red - Liens navigation hover */
   transform: translateY(-1px);
 }
 

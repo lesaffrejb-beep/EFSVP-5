@@ -80,6 +80,10 @@
   --color-hero-bg: #FBEDD9;      /* Antique White - Fond parchemin */
   --bg-page: #FBEDD9;            /* Antique White - Fond général */
 
+  /* Hero gradient backgrounds */
+  --hero-gradient: linear-gradient(180deg, #FBEDD9 0%, #FFF1D4 100%);
+  --hero-gradient-soft: linear-gradient(135deg, #FBEDD9 0%, #FFF1D4 50%, #FFFBEB 100%);
+
   /* === PALETTE OFFICIELLE === */
   --color-terre-cuite: #CC4B24;  /* Dark Pastel Red - CTA */
   --color-encre-nuit: #1A1A1A;   /* Noir adouci */
@@ -206,7 +210,8 @@
   --text-tertiary: #7a7a7a;
   --text-inverse: #ffffff;
   --text-accent: #317039;        /* Emerald Green */
-  --focus-color: #F1BE49;        /* Maximum Yellow */
+  --focus-color: #F1BE49;        /* Maximum Yellow - Focus states */
+  --link-hover-underline: #F1BE49; /* Maximum Yellow - Link hover underline */
 
   /* Borders */
   --border-color: rgba(26, 26, 26, 0.08);
@@ -491,11 +496,14 @@ p {
 a {
   text-decoration: none;
   color: inherit;
-  transition: color var(--transition-base);
+  transition: color var(--transition-base), text-decoration-color var(--transition-base);
 }
 
 a:hover {
   color: var(--text-accent);
+  text-decoration: underline;
+  text-decoration-color: #F1BE49; /* Maximum Yellow - Soulignement liens hover */
+  text-underline-offset: 3px;
 }
 
 img {
@@ -540,8 +548,8 @@ button,
 }
 
 *:focus-visible {
-  outline: 2px solid var(--focus-color);
-  outline-offset: 4px;
+  outline: 2px solid #F1BE49; /* Maximum Yellow - Focus states */
+  outline-offset: 2px;
   border-radius: var(--radius-xs);
 }
 
@@ -1252,7 +1260,7 @@ button,
   letter-spacing: -0.01em;
   text-align: center;
   margin-bottom: var(--space-6);
-  color: var(--text-primary);
+  color: #317039; /* Emerald Green - Titres de section */
 }
 
 /* Section-specific title margins */
@@ -1810,7 +1818,7 @@ button,
 }
 
 .section-what-changes {
-  background-color: var(--section-bg-impact);
+  background-color: #FFF1D4; /* Papaya Whip - Section "Ce que ça change vraiment" */
 }
 
 .promise__container {
@@ -1879,15 +1887,20 @@ button,
   content: none;
 }
 
-/* Icône centrée - Terre cuite - TRÈS GRANDES pour impact visuel fort */
+/* Icône centrée - Maximum Yellow pour "Ce que ça change vraiment" */
 .promise-card__icon {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 6rem; /* Agrandi à 6rem (96px) pour forte présence */
   height: 6rem;
-  color: var(--color-terre-cuite);
+  color: #F1BE49; /* Maximum Yellow - Icônes section impact */
   margin-bottom: 1rem; /* Espace généreux sous l'icône */
+}
+
+/* Icône dans autres sections - Dark Pastel Red */
+.promise:not(.section-what-changes) .promise-card__icon {
+  color: #CC4B24; /* Dark Pastel Red pour les autres sections */
 }
 
 .impact-card__icon {
@@ -2036,8 +2049,8 @@ button,
 /* Step cards - Style v3 unifié avec tokens */
 .process__step {
   position: relative;
-  background-color: var(--card-surface, var(--bg-white-pure));
-  border: none;
+  background-color: #FFFBEB; /* Cosmic Latte - Cartes étapes */
+  border: 1px solid rgba(49, 112, 57, 0.2); /* Emerald Green à 20% d'opacité */
   border-radius: var(--radius-xl);
   padding: var(--space-8); /* Agrandi de var(--space-6) à var(--space-8) */
   display: flex;
@@ -2069,7 +2082,7 @@ button,
   flex-wrap: wrap;
 }
 
-/* Numéro d'étape - Pastille circulaire accent harmonisé */
+/* Numéro d'étape - Pastille circulaire Dark Pastel Red */
 .process__step-number {
   display: flex;
   align-items: center;
@@ -2078,7 +2091,7 @@ button,
   height: 58px;
   min-width: 58px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-main) 0%, var(--color-primary-400) 100%);
+  background: linear-gradient(135deg, #CC4B24 0%, #e65a33 100%); /* Dark Pastel Red gradient */
   color: #FFFFFF;
   font-family: var(--font-display);
   font-size: 1.5rem; /* Agrandi de 1.25rem à 1.5rem */
@@ -2213,10 +2226,10 @@ button,
   }
 }
 
-/* Base offer card - unifié avec tokens */
+/* Base offer card - Écriture seule : Cosmic Latte */
 .offer-card {
-  background: var(--card-surface, var(--bg-white-pure));
-  border: 1px solid var(--border-subtle);
+  background: #FFFBEB; /* Cosmic Latte */
+  border: 1px solid rgba(49, 112, 57, 0.1); /* Emerald Green transparent */
   border-radius: var(--radius-xl);
   padding: var(--space-8);
   display: flex;
@@ -2224,6 +2237,12 @@ button,
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   position: relative;
   box-shadow: var(--shadow-soft);
+}
+
+/* Carte Performance live - Papaya Whip avec bordure Dark Pastel Red */
+.offer-card:nth-child(2):not(.offer-card--featured) {
+  background: #FFF1D4; /* Papaya Whip */
+  border: 2px solid #CC4B24; /* Dark Pastel Red */
 }
 
 .offer-card:not(.offer-card--featured):hover {
@@ -2314,7 +2333,7 @@ button,
   font-family: var(--font-serif-display);
   font-size: var(--text-4xl);
   font-weight: var(--font-normal);
-  color: var(--text-primary);
+  color: #CC4B24; /* Dark Pastel Red - Prix */
   display: block;
   line-height: var(--leading-tight);
   margin-top: var(--space-1);
@@ -2585,11 +2604,11 @@ button,
   color: var(--text-secondary);
 }
 
-/* Projects Section - PREMIUM 2026 : Fond blanc pur, identique au hero */
+/* Projects Section - PREMIUM 2026 : Fond Papaya Whip */
 .projects,
 .section.section--projects,
 .section-projects {
-  background-color: var(--bg-white-pure, #FFFFFF) !important; /* Fond blanc pur identique au hero */
+  background-color: #FFF1D4 !important; /* Papaya Whip - Section projets */
   margin-top: 0 !important; /* Supprime tout liserai entre hero et projets */
   padding-top: clamp(3rem, 7vh, 4rem) !important; /* Spacing cohérent avec les autres sections */
   border-top: none !important; /* Aucune bordure */
@@ -2802,8 +2821,8 @@ button,
 
 .faq__item {
   position: relative;
-  background: var(--card-surface, var(--bg-white-pure));
-  border: none;
+  background: #FFFBEB; /* Cosmic Latte - Cartes FAQ */
+  border: 1px solid rgba(49, 112, 57, 0.15); /* Emerald Green à 15% d'opacité */
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-soft);
   overflow: hidden;
@@ -2860,8 +2879,8 @@ button,
   width: 40px;
   height: 40px;
   border-radius: var(--radius-full);
-  background: rgba(49, 112, 57, 0.12);
-  border: 1px solid rgba(49, 112, 57, 0.18);
+  background: rgba(204, 75, 36, 0.1); /* Dark Pastel Red background */
+  border: 1px solid rgba(204, 75, 36, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2878,7 +2897,7 @@ button,
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 6px solid var(--color-primary-500);
+  border-top: 6px solid #CC4B24; /* Dark Pastel Red - Flèches FAQ */
   transform: translate(-50%, -50%);
   transition: transform var(--transition-base), border-color var(--transition-base);
 }
@@ -3198,8 +3217,8 @@ button,
   font-size: 0.95rem;
   font-family: var(--font-body);
   color: var(--text-primary);
-  background-color: var(--bg-off-white, #F5F5F7); /* Blanc/gris doux harmonisé avec FAQ */
-  border: 1px solid var(--border-color-strong);
+  background-color: #FFFBEB; /* Cosmic Latte - Champs de formulaire */
+  border: 1px solid rgba(49, 112, 57, 0.3); /* Emerald Green à 30% d'opacité */
   border-radius: var(--radius-md);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
@@ -3346,7 +3365,7 @@ button,
 
 .form__checkbox input {
   margin-top: 0.2rem;
-  accent-color: var(--color-primary-500);
+  accent-color: #317039; /* Emerald Green - Case à cocher */
 }
 
 .form__error {
@@ -3428,13 +3447,13 @@ button,
   }
 }
 
-/* Footer - PREMIUM 2026 : Unifié avec Contact (sombre) */
+/* Footer - PREMIUM 2026 : Fond Emerald Green */
 .footer {
   position: relative;
-  background: var(--bg-dark-deep); /* Même fond que contact */
-  color: var(--text-inverse);
+  background: #317039; /* Emerald Green - Couleur principale */
+  color: #FBEDD9; /* Antique White - Texte sur fond vert */
   padding: var(--space-20) 0 var(--space-12);
-  border-top: none; /* Fusion avec contact */
+  border-top: none;
   box-shadow: none;
 }
 
@@ -3529,15 +3548,16 @@ button,
 .footer__links a {
   font-size: var(--text-sm);
   font-weight: var(--font-normal);
-  color: color-mix(in srgb, var(--text-inverse) 70%, transparent);
+  color: rgba(251, 237, 217, 0.85); /* Antique White */
   line-height: var(--leading-snug);
   transition: color var(--transition-base), text-decoration-color var(--transition-base);
   text-decoration: none;
 }
 
 .footer__links a:hover {
-  color: var(--color-primary-300);
+  color: #F1BE49; /* Maximum Yellow on hover */
   text-decoration: underline;
+  text-decoration-color: #F1BE49;
 }
 
 .footer__contact-link {
@@ -3574,16 +3594,16 @@ button,
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-full);
-  border: 1px solid var(--border-color-inverse);
-  color: color-mix(in srgb, var(--text-inverse) 82%, transparent);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(251, 237, 217, 0.3); /* Antique White transparent */
+  color: #F1BE49; /* Maximum Yellow - Liens sociaux */
+  background: rgba(251, 237, 217, 0.08);
   transition: all var(--transition-base);
 }
 
 .footer__social-link:hover {
-  color: var(--color-primary-300);
-  border-color: color-mix(in srgb, var(--color-primary-400) 65%, transparent);
-  background: rgba(255, 255, 255, 0.08);
+  color: #FBEDD9; /* Antique White on hover */
+  border-color: #F1BE49; /* Maximum Yellow border */
+  background: rgba(241, 190, 73, 0.15);
 }
 
 .footer__social-link:focus-visible {
@@ -3872,23 +3892,23 @@ button,
   box-shadow: var(--shadow-soft-md);
 }
 
-/* Large numbers - Newsreader serif, gras, lisible */
+/* Large numbers - Newsreader serif, gras, Dark Pastel Red */
 .projects__stat-value {
   font-family: var(--font-serif-display);
   font-size: clamp(2.25rem, 2.8vw, 3rem);
   font-weight: var(--font-bold);
   line-height: 1;
-  color: var(--text-primary);
+  color: #CC4B24; /* Dark Pastel Red - Chiffres statistiques */
   margin-bottom: var(--space-1);
 }
 
-/* Label - petit, uppercase, tracking */
+/* Label - petit, uppercase, tracking, Emerald Green */
 .projects__stat-label {
   font-family: var(--font-body);
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--text-muted);
+  color: #317039; /* Emerald Green - Texte statistiques */
 }
 
 @media (max-width: 640px) {
@@ -4182,7 +4202,7 @@ button,
   height: 100%;
 }
 
-/* Project cards - PREMIUM 2026 : Cartes blanches flottantes uniformisées */
+/* Project cards - PREMIUM 2026 : Cartes Cosmic Latte */
 .project-card {
   --project-card-halo: color-mix(in srgb, var(--color-primary-500) 55%, transparent);
   position: relative;
@@ -4192,11 +4212,11 @@ button,
   min-height: 480px; /* Hauteur minimale pour uniformité */
   gap: var(--space-5);
   padding: var(--space-5);
-  background: var(--card-surface, var(--bg-white-pure));
+  background: #FFFBEB; /* Cosmic Latte - Cartes projets */
   border-radius: var(--radius-xl);
-  border: none;
+  border: 1px solid rgba(49, 112, 57, 0.1); /* Emerald Green transparent */
   box-shadow: var(--shadow-soft);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
   overflow: hidden;
   scroll-margin-top: calc(var(--header-height) + var(--space-6));
 }
@@ -4215,6 +4235,7 @@ button,
 .project-card:hover {
   transform: translateY(-6px) scale(1.01);
   box-shadow: var(--shadow-xl);
+  background: #FFF1D4; /* Papaya Whip - Hover effect */
 }
 
 .project-card:hover::before {
@@ -4489,7 +4510,7 @@ button,
   gap: var(--space-2);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
-  color: var(--text-secondary);
+  color: #317039; /* Emerald Green - Étiquette "Livré" */
 }
 
 .project-card__status::before {
@@ -4497,7 +4518,7 @@ button,
   width: 8px;
   height: 8px;
   border-radius: var(--radius-full);
-  background: var(--color-success);
+  background: #317039; /* Emerald Green - Statut par défaut (Livré) */
 }
 
 .project-card__status--in_production::before,
@@ -4511,9 +4532,9 @@ button,
   gap: var(--space-2);
   padding: var(--space-3) var(--space-5);
   border-radius: var(--radius-full);
-  border: 1px solid color-mix(in srgb, var(--project-card-halo) 30%, transparent);
-  background: color-mix(in srgb, var(--color-primary-50) 35%, transparent);
-  color: var(--color-primary-600);
+  border: 1px solid rgba(204, 75, 36, 0.3); /* Dark Pastel Red border */
+  background: rgba(204, 75, 36, 0.08);
+  color: #CC4B24; /* Dark Pastel Red - Bouton "Voir le projet" */
   font-weight: var(--font-semibold);
   transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base), color var(--transition-base), border-color var(--transition-base);
 }
@@ -4561,33 +4582,34 @@ iframe,
 main,
 main#main,
 #main {
-  margin-top: -1px !important; /* Remonte de 1px pour masquer tout micro-gap où le beige du body pourrait apparaître */
+  margin-top: -1px !important; /* Remonte de 1px pour masquer tout micro-gap */
   padding-top: 0 !important;
-  background-color: #FFFFFF !important; /* Fond blanc pour masquer le beige du body */
+  background-color: #FFF1D4 !important; /* Papaya Whip - Fond main */
   border-top: none !important;
 }
 
-/* 1.2 - Le hero doit avoir fond blanc et coller au main */
+/* 1.2 - Le hero doit avoir fond dégradé Antique White → Papaya Whip */
 .hero,
 .hero.hero--signature,
 section.hero,
 section#hero {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
-  background-color: #FFFFFF !important;
+  background: linear-gradient(180deg, #FBEDD9 0%, #FFF1D4 100%) !important;
+  background-color: #FBEDD9 !important;
   z-index: 10;
   position: relative;
   border-bottom: none !important;
 }
 
-/* 1.3 - La section projets doit avoir fond blanc et aucun gap en haut */
+/* 1.3 - La section projets doit avoir fond Papaya Whip et aucun gap en haut */
 .projects,
 .section-projects,
 .section.section--projects,
 section#projects {
   margin-top: 0 !important;
   padding-top: 4rem !important; /* Espace INTERNE, pas externe */
-  background-color: #FFFFFF !important; /* Fond BLANC obligatoire */
+  background-color: #FFF1D4 !important; /* Papaya Whip - Fond section projets */
   border-top: none !important;
 }
 
@@ -4744,7 +4766,7 @@ section.contact .form__checkbox span,
   color: rgba(255, 255, 255, 0.85) !important;
 }
 
-/* 4.7 Champs de formulaire - fond clair pour contraste */
+/* 4.7 Champs de formulaire - fond Cosmic Latte avec bordure Emerald Green */
 section.contact .form__input,
 section.contact .form__textarea,
 section.contact .form__select,
@@ -4757,9 +4779,9 @@ section.contact .form__select,
 .contact__card .form__input,
 .contact__card .form__textarea,
 .contact__card .form__select {
-  background-color: #FFFBEB !important;
+  background-color: #FFFBEB !important; /* Cosmic Latte */
   color: #1A1A1A !important;
-  border: 1px solid rgba(26, 26, 26, 0.15) !important;
+  border: 1px solid rgba(49, 112, 57, 0.3) !important; /* Emerald Green à 30% */
 }
 
 /* 4.8 Focus - fond blanc */

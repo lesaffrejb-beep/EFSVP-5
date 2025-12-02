@@ -100,9 +100,9 @@
   justify-content: center;
   position: relative;
 
-  /* Style - Fond BLANC PUR obligatoire (fix liseré beige) */
-  background: #FFFFFF !important;
-  background-color: #FFFFFF !important;
+  /* Style - Dégradé Antique White → Papaya Whip */
+  background: linear-gradient(180deg, #FBEDD9 0%, #FFF1D4 100%) !important;
+  background-color: #FBEDD9 !important;
   overflow: hidden;
   isolation: isolate;
   z-index: 10;
@@ -254,14 +254,14 @@
 .hero__baseline,
 .hero-subtitle,
 .hero-signature-caption {
-  /* Texte principal : Plus Jakarta Sans, couleur sombre lisible */
+  /* Texte principal : Plus Jakarta Sans, Emerald Green */
   font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
   font-size: var(--text-3xl);
   font-weight: 400;
   font-style: normal;
   line-height: 1.1 !important;
   letter-spacing: -0.01em;
-  color: var(--color-encre-nuit, #1A1A1A); /* Noir adouci - lisible sur parchemin */
+  color: #317039; /* Emerald Green - Texte hero "Vous êtes de ceux qui écrivent..." */
   text-shadow: none;
   max-width: 52ch;
 
@@ -389,7 +389,7 @@
   display: none !important;
 }
 
-/* Pseudo-élément pour effet halo subtil permanent */
+/* Pseudo-élément pour effet halo Maximum Yellow subtil */
 .btn-hero::before,
 .hero__cta::before {
   content: '';
@@ -397,8 +397,8 @@
   inset: -8px;
   background: radial-gradient(
     ellipse 100% 100% at 50% 50%,
-    rgba(204, 75, 36, 0.12) 0%,
-    rgba(230, 90, 51, 0.06) 40%,
+    rgba(241, 190, 73, 0.25) 0%,
+    rgba(241, 190, 73, 0.12) 40%,
     transparent 70%
   );
   opacity: 1;
