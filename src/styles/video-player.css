@@ -168,7 +168,7 @@
 }
 
 .video-player__play-btn.playing {
-  background: var(--color-primary-600, #9a3819);
+  background: var(--btn-primary-bg-hover, #b3421f); /* Dark Pastel Red hover */
 }
 
 /* ===== Timeline ===== */
