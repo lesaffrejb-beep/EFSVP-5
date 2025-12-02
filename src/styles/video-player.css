@@ -8,12 +8,15 @@
 
 /* ===== Variables CSS ===== */
 :root {
-  --video-player-bg: var(--bg-elevated, #ffffff);
+  --video-player-bg: var(--bg-elevated, var(--bg-card));
   --video-player-radius: var(--radius-lg, 12px);
   --video-player-shadow: var(--shadow-lg, 0 8px 32px rgba(0, 0, 0, 0.08));
   --video-player-padding: var(--space-6, 1.5rem);
   --video-player-transition: var(--transition-smooth, 0.3s ease);
   --video-controls-height: 60px;
+  --video-progress-track: rgba(49, 112, 57, 0.18);
+  --video-progress-fill: var(--color-accent, #CC4B24);
+  --video-progress-handle: var(--color-accent, #CC4B24);
 }
 
 /* ===== Container Principal ===== */
@@ -130,7 +133,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-3, 0.75rem);
-  background: var(--bg-secondary, #f3f4f6);
+  background: var(--bg-secondary, var(--bg-section));
   padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
   border-radius: var(--radius-md, 8px);
 }
@@ -140,8 +143,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--color-primary-500, #CC4B24);
-  color: white;
+  background: var(--color-primary, #317039);
+  color: var(--text-on-accent, #FFFBEB);
   border: none;
   cursor: pointer;
   flex-shrink: 0;
@@ -155,7 +158,7 @@
 
 .video-player__play-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 16px rgba(204, 75, 36, 0.3);
+  box-shadow: var(--shadow-primary);
 }
 
 .video-player__play-btn:active {
@@ -168,14 +171,14 @@
 }
 
 .video-player__play-btn.playing {
-  background: var(--btn-primary-bg-hover, #b3421f); /* Dark Pastel Red hover */
+  background: var(--color-primary-700);
 }
 
 /* ===== Timeline ===== */
 .video-player__timeline {
   flex: 1;
   height: 6px;
-  background: var(--bg-tertiary, #e5e7eb);
+  background: var(--video-progress-track);
   border-radius: 3px;
   position: relative;
   cursor: pointer;
@@ -191,7 +194,7 @@
   left: 0;
   top: 0;
   height: 100%;
-  background: rgba(204, 75, 36, 0.2);
+  background: rgba(49, 112, 57, 0.22);
   border-radius: 3px;
   width: 0%;
   transition: width 0.1s ease;
@@ -202,7 +205,7 @@
   left: 0;
   top: 0;
   height: 100%;
-  background: var(--color-primary-500, #CC4B24);
+  background: var(--video-progress-fill);
   border-radius: 3px;
   width: 0%;
   z-index: 1;
@@ -216,7 +219,7 @@
   transform: translateY(-50%);
   width: 12px;
   height: 12px;
-  background: var(--color-primary-500, #CC4B24);
+  background: var(--video-progress-handle);
   border-radius: 50%;
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -233,14 +236,14 @@
   gap: var(--space-1, 0.25rem);
   font-size: var(--text-xs, 0.75rem);
   font-weight: 500;
-  color: var(--text-secondary, #6b7280);
+  color: var(--text-secondary);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .video-player__separator {
-  color: var(--text-tertiary, #9ca3af);
+  color: var(--text-tertiary);
 }
 
 /* ===== Volume Button ===== */
@@ -249,7 +252,7 @@
   height: 36px;
   border-radius: 50%;
   background: transparent;
-  color: var(--text-secondary, #6b7280);
+  color: var(--text-secondary);
   border: none;
   cursor: pointer;
   flex-shrink: 0;
@@ -263,7 +266,7 @@
 
 .video-player__volume-btn:hover {
   background: var(--bg-hover, rgba(0, 0, 0, 0.04));
-  color: var(--text-primary, #1A1A1A);
+  color: var(--text-primary);
 }
 
 .video-player__volume-btn:focus-visible {
@@ -277,7 +280,7 @@
   height: 36px;
   border-radius: 50%;
   background: transparent;
-  color: var(--text-secondary, #6b7280);
+  color: var(--text-secondary);
   border: none;
   cursor: pointer;
   flex-shrink: 0;
@@ -291,7 +294,7 @@
 
 .video-player__fullscreen-btn:hover {
   background: var(--bg-hover, rgba(0, 0, 0, 0.04));
-  color: var(--text-primary, #1A1A1A);
+  color: var(--text-primary);
 }
 
 .video-player__fullscreen-btn:focus-visible {
@@ -306,16 +309,16 @@
   justify-content: center;
   gap: var(--space-3, 0.75rem);
   padding: var(--space-12, 3rem) var(--space-6, 1.5rem);
-  background: var(--bg-secondary, #f3f4f6);
+  background: var(--bg-secondary, var(--bg-section-alt));
   border-radius: var(--radius-md, 8px);
-  color: var(--text-secondary, #6b7280);
+  color: var(--text-secondary);
   min-height: 200px;
 }
 
 .video-player__error-icon {
   width: 32px;
   height: 32px;
-  color: var(--color-warning, #f59e0b);
+  color: var(--color-highlight);
   flex-shrink: 0;
 }
 
@@ -441,21 +444,21 @@
 /* ===== Dark Mode Support ===== */
 @media (prefers-color-scheme: dark) {
   .video-player {
-    --video-player-bg: #1e293b;
+    --video-player-bg: color-mix(in srgb, var(--color-neutral-800) 82%, var(--color-primary-700) 18%);
     --video-player-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     border-color: rgba(255, 255, 255, 0.1);
   }
 
   .video-player__controls {
-    background: #334155;
+    background: color-mix(in srgb, var(--color-neutral-800) 88%, var(--color-primary-700) 12%);
   }
 
   .video-player__error {
-    background: #334155;
+    background: color-mix(in srgb, var(--color-neutral-800) 88%, var(--color-primary-700) 12%);
   }
 
   .video-player__timeline {
-    background: #475569;
+    background: color-mix(in srgb, var(--color-primary) 28%, var(--color-neutral-800) 72%);
   }
 }
 
