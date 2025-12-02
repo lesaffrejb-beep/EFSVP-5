@@ -230,20 +230,20 @@
   opacity: 0;
 }
 
-/* Path de la signature manuscrite - Encre de nuit sur fond clair (token hero) */
+/* Path de la signature manuscrite - Noir adouci sur fond clair (token hero) */
 .hero-signature-path {
   fill: none;
-  stroke: var(--hero-signature-color, var(--color-encre-nuit, #1A2332));
+  stroke: var(--hero-signature-color, var(--color-encre-nuit, #1A1A1A));
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
   will-change: stroke-dashoffset;
 }
 
-/* Classe utilitaire pour forcer la signature en encre nuit (token hero) */
+/* Classe utilitaire pour forcer la signature en noir adouci (token hero) */
 .hero-signature,
 .hero-signature path {
-  stroke: var(--hero-signature-color, var(--color-encre-nuit, #1A2332));
+  stroke: var(--hero-signature-color, var(--color-encre-nuit, #1A1A1A));
   fill: transparent;
 }
 
@@ -261,7 +261,7 @@
   font-style: normal;
   line-height: 1.1 !important;
   letter-spacing: -0.01em;
-  color: var(--color-encre-nuit, #1A2332); /* Encre nuit - lisible sur parchemin */
+  color: var(--color-encre-nuit, #1A1A1A); /* Noir adouci - lisible sur parchemin */
   text-shadow: none;
   max-width: 52ch;
 
@@ -297,7 +297,7 @@
   font-family: inherit;
   font-style: normal; /* Pas d'italique */
   font-weight: 400; /* Même poids que le texte de base */
-  color: var(--color-terre-cuite, #B8441E); /* Terre cuite pour accent */
+  color: var(--color-terre-cuite, #CC4B24); /* Dark Pastel Red pour accent */
 }
 
 .hero__text-stack {
@@ -351,8 +351,8 @@
   min-height: 56px;
   min-width: 48px;
 
-  /* Style - Hero CTA with gradient Terre cuite → Ambre */
-  background: var(--btn-primary-gradient, linear-gradient(135deg, #B8441E 0%, #E8924F 100%));
+  /* Style - Hero CTA with gradient Dark Pastel Red */
+  background: var(--btn-primary-gradient, linear-gradient(135deg, #CC4B24 0%, #e65a33 100%));
   color: var(--text-inverse, #FFFFFF);
   font-family: var(--font-body, 'Plus Jakarta Sans', sans-serif);
   font-size: 1.0625rem;
@@ -364,8 +364,8 @@
   border-radius: var(--radius-lg, 16px);
   cursor: pointer;
 
-  /* Box-shadow premium - OMBRE TERRE CUITE */
-  box-shadow: var(--btn-primary-shadow, 0 12px 28px -8px rgba(184, 68, 30, 0.35)) !important;
+  /* Box-shadow premium - OMBRE DARK PASTEL RED */
+  box-shadow: var(--btn-primary-shadow, 0 12px 28px -8px rgba(204, 75, 36, 0.35)) !important;
 
   /* ✅ REMOVED transform transition - conflicts with GSAP entry animation */
   /* CTA entry animation (opacity, y, scale) is handled by GSAP timeline in hero-signature.js */
@@ -397,8 +397,8 @@
   inset: -8px;
   background: radial-gradient(
     ellipse 100% 100% at 50% 50%,
-    rgba(184, 68, 30, 0.12) 0%,
-    rgba(232, 146, 79, 0.06) 40%,
+    rgba(204, 75, 36, 0.12) 0%,
+    rgba(230, 90, 51, 0.06) 40%,
     transparent 70%
   );
   opacity: 1;
@@ -415,13 +415,13 @@
   transform: scale(1.15);
 }
 
-/* Hover - Glow Terre cuite amplifié */
+/* Hover - Glow Dark Pastel Red amplifié */
 .btn-hero:hover,
 .hero__cta:hover,
 .hero__cta.btn:hover {
   transform: translateY(-2px);
-  background: var(--btn-primary-gradient-hover, linear-gradient(135deg, #A03A18 0%, #B8441E 100%));
-  box-shadow: var(--btn-primary-shadow-hover, 0 18px 40px -8px rgba(184, 68, 30, 0.5)) !important;
+  background: var(--btn-primary-gradient-hover, linear-gradient(135deg, #b3421f 0%, #CC4B24 100%));
+  box-shadow: var(--btn-primary-shadow-hover, 0 18px 40px -8px rgba(204, 75, 36, 0.5)) !important;
   filter: brightness(1.03);
   /* ✅ Transition ONLY for hover state (not for entry animation) */
   transition:
@@ -436,7 +436,7 @@
 .hero__cta:active,
 .hero__cta.btn:active {
   transform: translateY(0) scale(0.98);
-  box-shadow: 0 4px 12px rgba(184, 68, 30, 0.25) !important;
+  box-shadow: 0 4px 12px rgba(204, 75, 36, 0.25) !important;
   /* ✅ Fast transition for active state */
   transition:
     transform 100ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -447,9 +447,9 @@
 .btn-hero:focus-visible,
 .hero__cta:focus-visible,
 .hero__cta.btn:focus-visible {
-  outline: 2px solid var(--color-terre-cuite, #B8441E);
+  outline: 2px solid var(--color-terre-cuite, #CC4B24);
   outline-offset: 3px;
-  box-shadow: var(--btn-primary-shadow, 0 12px 28px -8px rgba(184, 68, 30, 0.35)) !important;
+  box-shadow: var(--btn-primary-shadow, 0 12px 28px -8px rgba(204, 75, 36, 0.35)) !important;
   /* ✅ Transition for focus state */
   transition:
     outline 150ms cubic-bezier(0.4, 0, 0.2, 1),
